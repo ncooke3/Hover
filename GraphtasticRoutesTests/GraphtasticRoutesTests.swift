@@ -46,21 +46,7 @@ class GraphtasticRoutesTests: XCTestCase {
                 XCTAssertEqual(error as! GraphError, GraphError.vertexNotInGraph)
         }
     }
-    
-    func setupGraphSimpleGraph(a graph: Graph) {
-        // add vertices
-        let vertexA = graph.addVertex(key: "A")
-        let vertexB = graph.addVertex(key: "B")
-        let vertexC = graph.addVertex(key: "C")
-        
-        // add edges
-        graph.addEdge(from: vertexA, to: vertexB, with: 10)
-        graph.addEdge(from: vertexA, to: vertexC, with: 10)
-        graph.addEdge(from: vertexB, to: vertexC, with: 10)
-        
-    }
 
-    
     func testGraphWithOneVertex() {
         setupGraphWithSingleVertex(a: testGraph)
         let path: [Vertex] = try! testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[0])
@@ -93,6 +79,19 @@ class GraphtasticRoutesTests: XCTestCase {
         for (index, vertex) in path.enumerated() {
             XCTAssertTrue(correctValues[index] == vertex.key)
         }
+    }
+    
+    func setupGraphSimpleGraph(a graph: Graph) {
+        // add vertices
+        let vertexA = graph.addVertex(key: "A")
+        let vertexB = graph.addVertex(key: "B")
+        let vertexC = graph.addVertex(key: "C")
+        
+        // add edges
+        graph.addEdge(from: vertexA, to: vertexB, with: 10)
+        graph.addEdge(from: vertexA, to: vertexC, with: 10)
+        graph.addEdge(from: vertexB, to: vertexC, with: 10)
+        
     }
     
     func setupGraphWithSingleVertex(a graph: Graph) {
