@@ -26,40 +26,78 @@ class GraphtasticRoutesTests: XCTestCase {
         testGraph = nil
     }
     
+    func testEmptyGraph() {
+        testGraph = Graph()
+        XCTAssertThrowsError( try testGraph.aStarSearch(from: Vertex(), to: Vertex()) ) { error in
+            XCTAssertEqual(error as! GraphError, GraphError.emptyGraph)
+        }
+    }
+    
+    func testGraphDoesNotContainStartVertex() {
+        setupGraphSimpleGraph(a: testGraph)
+        XCTAssertThrowsError( try testGraph.aStarSearch(from: Vertex(), to: testGraph.canvas[0]) ) { error in
+            XCTAssertEqual(error as! GraphError, GraphError.vertexNotInGraph)
+        }
+    }
+    
+    func testGraphDoesNotContainEndVertex() {
+        setupGraphSimpleGraph(a: testGraph)
+        XCTAssertThrowsError( try testGraph.aStarSearch(from: testGraph.canvas[0], to: Vertex()) ) { error in
+                XCTAssertEqual(error as! GraphError, GraphError.vertexNotInGraph)
+        }
+    }
+    
+    func setupGraphSimpleGraph(a graph: Graph) {
+        // add vertices
+        let vertexA = graph.addVertex(key: "A")
+        let vertexB = graph.addVertex(key: "B")
+        let vertexC = graph.addVertex(key: "C")
+        
+        // add edges
+        graph.addEdge(from: vertexA, to: vertexB, with: 10)
+        graph.addEdge(from: vertexA, to: vertexC, with: 10)
+        graph.addEdge(from: vertexB, to: vertexC, with: 10)
+        
+    }
+
+    
     func testGraphWithOneVertex() {
-        testGraph.addVertex(key: "A")
-        
-        let path: [Vertex] = testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[0])
-        
-        XCTAssert(path[0].key == "A")
+        setupGraphWithSingleVertex(a: testGraph)
+        let path: [Vertex] = try! testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[0])
+        XCTAssertTrue(path[0].key == "A")
     }
 
     func testMediumGraph() {
         setupMediumGraph(a: testGraph)
-        let path: [Vertex] = testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[9])
+        let path: [Vertex] = try! testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[9])
         let correctValues: [String] = ["A", "F", "G", "I", "J"]
         for (index, vertex) in path.enumerated() {
-            XCTAssert(correctValues[index] == vertex.key)
+            XCTAssertTrue(correctValues[index] == vertex.key)
         }
 
     }
     
     func testSmallGraph() {
         setupSmallGraph(a: testGraph)
-        let path: [Vertex] = testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[6])
+        let path: [Vertex] = try! testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[6])
         let correctValues: [String] = ["A", "C", "B", "D", "E", "Z"]
         for (index, vertex) in path.enumerated() {
-            XCTAssert(correctValues[index] == vertex.key)
+            XCTAssertTrue(correctValues[index] == vertex.key)
         }
     }
     
     func testLinearGraph() {
         setupLinearGraph(a: testGraph)
-        let path: [Vertex] = testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[3])
+        let path: [Vertex] = try! testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[3])
         let correctValues: [String] = ["A", "B", "C", "D"]
         for (index, vertex) in path.enumerated() {
-            XCTAssert(correctValues[index] == vertex.key)
+            XCTAssertTrue(correctValues[index] == vertex.key)
         }
+    }
+    
+    func setupGraphWithSingleVertex(a graph: Graph) {
+        let vertexA = graph.addVertex(key: "A")
+        vertexA.h = 0
     }
 
     
