@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		EA687435231A1E8F0099DAC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687434231A1E8F0099DAC4 /* AppDelegate.swift */; };
 		EA687437231A1E8F0099DAC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687436231A1E8F0099DAC4 /* ViewController.swift */; };
-		EA68743A231A1E8F0099DAC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA687438231A1E8F0099DAC4 /* Main.storyboard */; };
 		EA68743C231A1E900099DAC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA68743B231A1E900099DAC4 /* Assets.xcassets */; };
-		EA68743F231A1E900099DAC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA68743D231A1E900099DAC4 /* LaunchScreen.storyboard */; };
 		EA68744A231A1E910099DAC4 /* GraphtasticRoutesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687449231A1E910099DAC4 /* GraphtasticRoutesTests.swift */; };
 		EA687455231A1F560099DAC4 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687454231A1F560099DAC4 /* Vertex.swift */; };
 		EA687457231A20FC0099DAC4 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687456231A20FC0099DAC4 /* Graph.swift */; };
@@ -31,9 +29,7 @@
 		EA687431231A1E8F0099DAC4 /* GraphtasticRoutes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphtasticRoutes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA687434231A1E8F0099DAC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA687436231A1E8F0099DAC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EA687439231A1E8F0099DAC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA68743B231A1E900099DAC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EA68743E231A1E900099DAC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA687440231A1E910099DAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA687445231A1E910099DAC4 /* GraphtasticRoutesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GraphtasticRoutesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA687449231A1E910099DAC4 /* GraphtasticRoutesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphtasticRoutesTests.swift; sourceTree = "<group>"; };
@@ -83,11 +79,9 @@
 			children = (
 				EA687434231A1E8F0099DAC4 /* AppDelegate.swift */,
 				EA687436231A1E8F0099DAC4 /* ViewController.swift */,
-				EA687438231A1E8F0099DAC4 /* Main.storyboard */,
 				EA687456231A20FC0099DAC4 /* Graph.swift */,
 				EA687454231A1F560099DAC4 /* Vertex.swift */,
 				EA68743B231A1E900099DAC4 /* Assets.xcassets */,
-				EA68743D231A1E900099DAC4 /* LaunchScreen.storyboard */,
 				EA687440231A1E910099DAC4 /* Info.plist */,
 			);
 			path = GraphtasticRoutes;
@@ -183,9 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA68743F231A1E900099DAC4 /* LaunchScreen.storyboard in Resources */,
 				EA68743C231A1E900099DAC4 /* Assets.xcassets in Resources */,
-				EA68743A231A1E8F0099DAC4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,25 +219,6 @@
 			targetProxy = EA687446231A1E910099DAC4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		EA687438231A1E8F0099DAC4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA687439231A1E8F0099DAC4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EA68743D231A1E900099DAC4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA68743E231A1E900099DAC4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		EA68744C231A1E910099DAC4 /* Debug */ = {
