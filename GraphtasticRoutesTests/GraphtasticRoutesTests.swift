@@ -52,6 +52,14 @@ class GraphtasticRoutesTests: XCTestCase {
         let path: [Vertex] = try! testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[0])
         XCTAssertTrue(path[0].key == "A")
     }
+    
+    func testGraphWithIslandVertex() {
+        setupSimpleIslandGraph(a: testGraph)
+        let path: [Vertex] = try! testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[3])
+        XCTAssert(path.isEmpty) // because there is no path to reach it
+        
+        
+    }
 
     func testMediumGraph() {
         setupMediumGraph(a: testGraph)
@@ -60,7 +68,6 @@ class GraphtasticRoutesTests: XCTestCase {
         for (index, vertex) in path.enumerated() {
             XCTAssertTrue(correctValues[index] == vertex.key)
         }
-
     }
     
     func testSmallGraph() {
@@ -79,6 +86,15 @@ class GraphtasticRoutesTests: XCTestCase {
         for (index, vertex) in path.enumerated() {
             XCTAssertTrue(correctValues[index] == vertex.key)
         }
+    }
+    
+    func setupSimpleIslandGraph(a graph: Graph) {
+        // make simple graph
+        setupGraphSimpleGraph(a: graph)
+        
+        // add island vertex
+        let islandVertex = graph.addVertex(key: "Island")
+        islandVertex.h = 0
     }
     
     func setupGraphSimpleGraph(a graph: Graph) {
