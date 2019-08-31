@@ -8,8 +8,13 @@
 
 import Foundation
 
+enum GraphError: Error {
+    case emptyGraph
+    case vertexNotInGraph
+}
+
 public class Graph {
-    
+
     var canvas: [Vertex]
     var isDirected: Bool
     
@@ -48,7 +53,16 @@ public class Graph {
     }
     
     /// Search graph from start vertex to end vertex and return path taken.
-    func aStarSearch(from startVertex: Vertex, to endVertex: Vertex) -> [Vertex] {
+    func aStarSearch(from startVertex: Vertex, to endVertex: Vertex) throws -> [Vertex] {
+        
+        guard self.canvas.isNotEmpty() else { throw GraphError.emptyGraph }
+        
+        let graphDoesNotContainStartVertex = self.canvas.contains { $0.key == startVertex.key }
+        guard graphDoesNotContainStartVertex else { throw GraphError.vertexNotInGraph }
+  
+        let graphDoesNotContainEndVertex = self.canvas.contains { $0.key == endVertex.key }
+        guard graphDoesNotContainEndVertex else { throw GraphError.vertexNotInGraph }
+        
         var unvisited: [Vertex] = [Vertex]()
         var visited: [Vertex]   = [Vertex]()
         
