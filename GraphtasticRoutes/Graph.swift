@@ -55,6 +55,7 @@ public class Graph {
     /// Search graph from start vertex to end vertex and return path taken.
     func aStarSearch(from startVertex: Vertex, to endVertex: Vertex) throws -> [Vertex] {
         
+        // Handle Errors
         guard self.canvas.isNotEmpty() else { throw GraphError.emptyGraph }
         
         let graphDoesNotContainStartVertex = self.canvas.contains { $0.key == startVertex.key }
@@ -63,6 +64,7 @@ public class Graph {
         let graphDoesNotContainEndVertex = self.canvas.contains { $0.key == endVertex.key }
         guard graphDoesNotContainEndVertex else { throw GraphError.vertexNotInGraph }
         
+        // Begin Algorithm
         var unvisited: [Vertex] = [Vertex]()
         var visited: [Vertex]   = [Vertex]()
         
@@ -87,7 +89,13 @@ public class Graph {
             
             // 🏁 Check if we found goal vertex
             if currentVertex.key == endVertex.key { // TODO: compute equality based on position?
-                return visited // I think this will work as long as I append to end of visited array?
+                var path: [Vertex] = [Vertex]()
+                var backtrackingVertex: Vertex? = currentVertex
+                while backtrackingVertex != nil {
+                    path.append(backtrackingVertex!)
+                    backtrackingVertex = backtrackingVertex?.parent
+                }
+                return path.reversed()
             }
             
             // Get neighbors of currentVertext
@@ -111,12 +119,15 @@ public class Graph {
                 
                 guard doesVisitedContainNeighbor == false else { continue }
                 
+                // Set the parent 👨‍👦
+                neighbor.parent = currentVertex
+                
                 // Set the important values!
                 neighbor.g = currentVertex.g + lengthFromCurrentVertext
                 neighbor.h += 0
                 neighbor.f = neighbor.g + neighbor.h
                 
-                // Is neighbor in unvisited list?
+                // Is neighbor in in unvisited list?
                 var doesUnvisitedContainNeighbor: Bool = false
                 for unvisitedVertext in unvisited {
                     if neighbor.key == unvisitedVertext.key && neighbor.g >= unvisitedVertext.g {

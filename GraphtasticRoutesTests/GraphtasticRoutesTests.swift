@@ -73,7 +73,7 @@ class GraphtasticRoutesTests: XCTestCase {
     func testSmallGraph() {
         setupSmallGraph(a: testGraph)
         let path: [Vertex] = try! testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[6])
-        let correctValues: [String] = ["A", "C", "B", "D", "E", "Z"]
+        let correctValues: [String] = ["A", "C", "D", "E", "Z"]
         for (index, vertex) in path.enumerated() {
             XCTAssertTrue(correctValues[index] == vertex.key)
         }

@@ -12,6 +12,7 @@ class Vertex {
     
     var key: String?
     var edges: [Edge]
+    var parent: Vertex?
     var g: Int = 0
     var h: Int = 0
     var f: Int = 0
