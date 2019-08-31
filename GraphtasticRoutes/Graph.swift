@@ -129,11 +129,12 @@ public class Graph {
                 
                 // Is neighbor in in unvisited list?
                 var doesUnvisitedContainNeighbor: Bool = false
-                for unvisitedVertext in unvisited {
-                    if neighbor.key == unvisitedVertext.key && neighbor.g >= unvisitedVertext.g {
-                        doesUnvisitedContainNeighbor = true // and we dont want to update its values bc this one is farther
-                    } else {
-                        // probably should update values
+                for (index, unvisitedVertext) in unvisited.enumerated() {
+                    if neighbor.key == unvisitedVertext.key {
+                        doesUnvisitedContainNeighbor = true
+                        if neighbor.g < unvisitedVertext.g {
+                            unvisited[index] = neighbor
+                        }
                     }
                 }
                 
