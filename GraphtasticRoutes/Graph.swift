@@ -87,11 +87,15 @@ public class Graph {
             for (neighbor, lengthFromCurrentVertext) in neighborsOfCurrentVertext {
                 
                 // Break if neighbor is in visited list
+                var doesVisitedContainNeighbor: Bool = false
+                
                 for visitedVertex in visited {
                     if neighbor.key == visitedVertex.key {
-                        break
+                        doesVisitedContainNeighbor = true
                     }
                 }
+                
+                guard doesVisitedContainNeighbor == false else { continue }
                 
                 // Set the important values!
                 neighbor.g = currentVertex.g + lengthFromCurrentVertext
@@ -99,13 +103,16 @@ public class Graph {
                 neighbor.f = neighbor.g + neighbor.h
                 
                 // Is neighbor in unvisited list?
+                var doesUnvisitedContainNeighbor: Bool = false
                 for unvisitedVertext in unvisited {
-                    if neighbor.key == unvisitedVertext.key
-                        && neighbor.g >= unvisitedVertext.g { // TODO: compute equality based on position?
-                        // If so, then break
-                        break
+                    if neighbor.key == unvisitedVertext.key && neighbor.g >= unvisitedVertext.g {
+                        doesUnvisitedContainNeighbor = true // and we dont want to update its values bc this one is farther
+                    } else {
+                        // probably should update values
                     }
                 }
+                
+                guard doesUnvisitedContainNeighbor == false else { continue }
                 
                 // Finally, add neighbor to unvisited list
                 unvisited.append(neighbor)
