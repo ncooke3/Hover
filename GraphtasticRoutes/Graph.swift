@@ -156,7 +156,7 @@ public class Graph {
     
 }
 
-extension Array {
+extension Collection {
     
     func isNotEmpty() -> Bool {
         return !self.isEmpty
