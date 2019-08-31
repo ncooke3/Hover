@@ -35,7 +35,7 @@ class GraphtasticRoutesTests: XCTestCase {
     }
 
     func testMediumGraph() {
-        addSampleVerticesAndEdgesTo(a: testGraph)
+        setupMediumGraph(a: testGraph)
         let path: [Vertex] = testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[9])
         let correctValues: [String] = ["A", "F", "G", "I", "J"]
         for (index, vertex) in path.enumerated() {
@@ -45,17 +45,25 @@ class GraphtasticRoutesTests: XCTestCase {
     }
     
     func testSmallGraph() {
-        testSmallGraph(a: testGraph)
+        setupSmallGraph(a: testGraph)
         let path: [Vertex] = testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[6])
-
         let correctValues: [String] = ["A", "C", "B", "D", "E", "Z"]
+        for (index, vertex) in path.enumerated() {
+            XCTAssert(correctValues[index] == vertex.key)
+        }
+    }
+    
+    func testLinearGraph() {
+        setupLinearGraph(a: testGraph)
+        let path: [Vertex] = testGraph.aStarSearch(from: testGraph.canvas[0], to: testGraph.canvas[3])
+        let correctValues: [String] = ["A", "B", "C", "D"]
         for (index, vertex) in path.enumerated() {
             XCTAssert(correctValues[index] == vertex.key)
         }
     }
 
     
-    func addSampleVerticesAndEdgesTo(a graph: Graph) {
+    func setupMediumGraph(a graph: Graph) {
         // add vertices
         let vertexA: Vertex = graph.addVertex(key: "A")
         vertexA.h = 10
@@ -105,7 +113,7 @@ class GraphtasticRoutesTests: XCTestCase {
         
     }
     
-    func testSmallGraph(a graph: Graph) {
+    func setupSmallGraph(a graph: Graph) {
         // add vertices
         let vertexA: Vertex = graph.addVertex(key: "A")
         vertexA.h = 14
@@ -137,6 +145,27 @@ class GraphtasticRoutesTests: XCTestCase {
         graph.addEdge(from: vertexC, to: vertexE, with: 10)
         graph.addEdge(from: vertexD, to: vertexE, with: 2)
         graph.addEdge(from: vertexE, to: vertexZ, with: 5)
+        
+    }
+    
+    func setupLinearGraph(a graph: Graph) {
+        // add vertices
+        let vertexA = graph.addVertex(key: "A")
+        vertexA.h = 30
+        
+        let vertexB = graph.addVertex(key: "B")
+        vertexB.h = 20
+        
+        let vertexC = graph.addVertex(key: "C")
+        vertexC.h = 10
+        
+        let vertexD = graph.addVertex(key: "D")
+        vertexD.h = 0
+        
+        // add edges
+        graph.addEdge(from: vertexA, to: vertexB, with: 5)
+        graph.addEdge(from: vertexB, to: vertexC, with: 5)
+        graph.addEdge(from: vertexC, to: vertexD, with: 5)
         
     }
 
