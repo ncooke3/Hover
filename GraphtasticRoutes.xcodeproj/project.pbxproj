@@ -13,10 +13,19 @@
 		EA68743C231A1E900099DAC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA68743B231A1E900099DAC4 /* Assets.xcassets */; };
 		EA68743F231A1E900099DAC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA68743D231A1E900099DAC4 /* LaunchScreen.storyboard */; };
 		EA68744A231A1E910099DAC4 /* GraphtasticRoutesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687449231A1E910099DAC4 /* GraphtasticRoutesTests.swift */; };
+		EA687455231A1F560099DAC4 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687454231A1F560099DAC4 /* Vertex.swift */; };
+		EA687457231A20FC0099DAC4 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687456231A20FC0099DAC4 /* Graph.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		EA687446231A1E910099DAC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA687429231A1E8F0099DAC4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA687430231A1E8F0099DAC4;
+			remoteInfo = GraphtasticRoutes;
+		};
+		EA687464231A4B0D0099DAC4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EA687429231A1E8F0099DAC4 /* Project object */;
 			proxyType = 1;
@@ -36,6 +45,9 @@
 		EA687445231A1E910099DAC4 /* GraphtasticRoutesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GraphtasticRoutesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA687449231A1E910099DAC4 /* GraphtasticRoutesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphtasticRoutesTests.swift; sourceTree = "<group>"; };
 		EA68744B231A1E910099DAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA687454231A1F560099DAC4 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		EA687456231A20FC0099DAC4 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		EA68745F231A4B0D0099DAC4 /* GraphTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GraphTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +59,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EA687442231A1E910099DAC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA68745C231A4B0D0099DAC4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -70,6 +89,7 @@
 			children = (
 				EA687431231A1E8F0099DAC4 /* GraphtasticRoutes.app */,
 				EA687445231A1E910099DAC4 /* GraphtasticRoutesTests.xctest */,
+				EA68745F231A4B0D0099DAC4 /* GraphTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,6 +100,8 @@
 				EA687434231A1E8F0099DAC4 /* AppDelegate.swift */,
 				EA687436231A1E8F0099DAC4 /* ViewController.swift */,
 				EA687438231A1E8F0099DAC4 /* Main.storyboard */,
+				EA687456231A20FC0099DAC4 /* Graph.swift */,
+				EA687454231A1F560099DAC4 /* Vertex.swift */,
 				EA68743B231A1E900099DAC4 /* Assets.xcassets */,
 				EA68743D231A1E900099DAC4 /* LaunchScreen.storyboard */,
 				EA687440231A1E910099DAC4 /* Info.plist */,
@@ -134,6 +156,24 @@
 			productReference = EA687445231A1E910099DAC4 /* GraphtasticRoutesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		EA68745E231A4B0D0099DAC4 /* GraphTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA687466231A4B0D0099DAC4 /* Build configuration list for PBXNativeTarget "GraphTests" */;
+			buildPhases = (
+				EA68745B231A4B0D0099DAC4 /* Sources */,
+				EA68745C231A4B0D0099DAC4 /* Frameworks */,
+				EA68745D231A4B0D0099DAC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA687465231A4B0D0099DAC4 /* PBXTargetDependency */,
+			);
+			name = GraphTests;
+			productName = GraphTests;
+			productReference = EA68745F231A4B0D0099DAC4 /* GraphTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -148,6 +188,10 @@
 						CreatedOnToolsVersion = 10.2.1;
 					};
 					EA687444231A1E910099DAC4 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = EA687430231A1E8F0099DAC4;
+					};
+					EA68745E231A4B0D0099DAC4 = {
 						CreatedOnToolsVersion = 10.2.1;
 						TestTargetID = EA687430231A1E8F0099DAC4;
 					};
@@ -168,6 +212,7 @@
 			targets = (
 				EA687430231A1E8F0099DAC4 /* GraphtasticRoutes */,
 				EA687444231A1E910099DAC4 /* GraphtasticRoutesTests */,
+				EA68745E231A4B0D0099DAC4 /* GraphTests */,
 			);
 		};
 /* End PBXProject section */
@@ -190,6 +235,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EA68745D231A4B0D0099DAC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -197,8 +249,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA687457231A20FC0099DAC4 /* Graph.swift in Sources */,
 				EA687437231A1E8F0099DAC4 /* ViewController.swift in Sources */,
 				EA687435231A1E8F0099DAC4 /* AppDelegate.swift in Sources */,
+				EA687455231A1F560099DAC4 /* Vertex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +264,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EA68745B231A4B0D0099DAC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -217,6 +278,11 @@
 			isa = PBXTargetDependency;
 			target = EA687430231A1E8F0099DAC4 /* GraphtasticRoutes */;
 			targetProxy = EA687446231A1E910099DAC4 /* PBXContainerItemProxy */;
+		};
+		EA687465231A4B0D0099DAC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA687430231A1E8F0099DAC4 /* GraphtasticRoutes */;
+			targetProxy = EA687464231A4B0D0099DAC4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -434,6 +500,46 @@
 			};
 			name = Release;
 		};
+		EA687467231A4B0D0099DAC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K2A6VGGX23;
+				INFOPLIST_FILE = GraphTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ncooke.GraphTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GraphtasticRoutes.app/GraphtasticRoutes";
+			};
+			name = Debug;
+		};
+		EA687468231A4B0D0099DAC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K2A6VGGX23;
+				INFOPLIST_FILE = GraphTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ncooke.GraphTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GraphtasticRoutes.app/GraphtasticRoutes";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -460,6 +566,15 @@
 			buildConfigurations = (
 				EA687452231A1E910099DAC4 /* Debug */,
 				EA687453231A1E910099DAC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA687466231A4B0D0099DAC4 /* Build configuration list for PBXNativeTarget "GraphTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA687467231A4B0D0099DAC4 /* Debug */,
+				EA687468231A4B0D0099DAC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
