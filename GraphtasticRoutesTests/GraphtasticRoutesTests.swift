@@ -36,14 +36,14 @@ class GraphtasticRoutesTests: XCTestCase {
     func testGraphDoesNotContainStartVertex() {
         setupGraphSimpleGraph(a: testGraph)
         XCTAssertThrowsError( try testGraph.aStarSearch(from: Vertex(), to: testGraph.canvas[0]) ) { error in
-            XCTAssertEqual(error as! GraphError, GraphError.vertexNotInGraph)
+            XCTAssertEqual(error as! GraphError, GraphError.startVertexNotInGraph)
         }
     }
     
     func testGraphDoesNotContainEndVertex() {
         setupGraphSimpleGraph(a: testGraph)
         XCTAssertThrowsError( try testGraph.aStarSearch(from: testGraph.canvas[0], to: Vertex()) ) { error in
-                XCTAssertEqual(error as! GraphError, GraphError.vertexNotInGraph)
+                XCTAssertEqual(error as! GraphError, GraphError.goalVertexNotInGraph)
         }
     }
 

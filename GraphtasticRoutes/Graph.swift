@@ -10,7 +10,19 @@ import Foundation
 
 enum GraphError: Error {
     case emptyGraph
-    case vertexNotInGraph
+    case startVertexNotInGraph
+    case goalVertexNotInGraph
+    
+    public var errorDescription: String? {
+        switch self {
+        case .emptyGraph:
+            return NSLocalizedString("😅 The graph is empty.", comment: "The graph you are searching through is actually empty! Add vertices to continue.")
+        case .startVertexNotInGraph:
+            return NSLocalizedString("😅 The start vertex is not in the graph.", comment: "The start vertex does not seem to be in the graph... check your call to performAStar!")
+        case .goalVertexNotInGraph:
+            return NSLocalizedString(" 😅 The goal vertex is not in the graph.", comment: "The goal vertex does not seem to be in the graph... check your call to performAStar!")
+        }
+    }
 }
 
 public class Graph {
@@ -41,13 +53,13 @@ public class Graph {
         
         edge.anchor = endVertex
         edge.length = length
-        startVertex.edges.append(edge)
+        startVertex.edges.insert(edge)
         
         if isDirected == false {
             let reverseEdge: Edge = Edge()
             reverseEdge.anchor = startVertex
             reverseEdge.length = length
-            endVertex.edges.append(reverseEdge)
+            endVertex.edges.insert(reverseEdge)
         }
 
     }
@@ -59,10 +71,10 @@ public class Graph {
         guard self.canvas.isNotEmpty() else { throw GraphError.emptyGraph }
         
         let graphDoesNotContainStartVertex = self.canvas.contains { $0.key == startVertex.key }
-        guard graphDoesNotContainStartVertex else { throw GraphError.vertexNotInGraph }
+        guard graphDoesNotContainStartVertex else { throw GraphError.startVertexNotInGraph }
   
         let graphDoesNotContainEndVertex = self.canvas.contains { $0.key == endVertex.key }
-        guard graphDoesNotContainEndVertex else { throw GraphError.vertexNotInGraph }
+        guard graphDoesNotContainEndVertex else { throw GraphError.goalVertexNotInGraph }
         
         // Begin Algorithm
         var unvisited: [Vertex] = [Vertex]()
@@ -150,9 +162,6 @@ public class Graph {
         print("🏝 The node you are looking for was not reachable.")
         return [Vertex]()
     }
-    
-    
-    
     
 }
 
