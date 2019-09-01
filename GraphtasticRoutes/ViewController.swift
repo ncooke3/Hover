@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController {
 
     var mapView = MKMapView()
     var locationGraph: Graph!
@@ -22,9 +22,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         
         mapView.frame = view.frame
+        mapView.delegate = self
         view.addSubview(mapView)
         
-        mapView.delegate = self
+        
         
         locationGraph = Graph()
         let newyork   = locationGraph.addLocationVertex(name: "New York", latitude: 40.7128, longitude: -74.0060)
@@ -71,6 +72,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         self.flightpathPolyline = MKGeodesicPolyline(coordinates: locations, count: 3)
 
         let planeAnnotation = MKPointAnnotation()
+        
         planeAnnotation.title = "Drone"
         
         mapView.addAnnotation(planeAnnotation)
@@ -93,33 +95,29 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         perform(#selector(updatePlanePosition), with: nil, afterDelay: 0.3)
     }
+
+}
+
+extension ViewController: MKMapViewDelegate {
     
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
+    internal func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is MKPointAnnotation else { return nil }
         
         if annotation.title == "Drone" {
             let planeIdentifier = "Plane"
-
             let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: planeIdentifier)
                 ?? MKAnnotationView(annotation: annotation, reuseIdentifier: planeIdentifier)
-
+            
             annotationView.image = UIImage(named: "drone-2")
-        
             return annotationView
         }
-        
-
         let circleAnnotationView = self.circleAnnotationView(in: mapView, for: annotation)
-
         return circleAnnotationView
     }
     
     
     private func circleAnnotationView(in mapView: MKMapView, for annotation: MKAnnotation) -> CircleAnnotation {
         let identifier = "circleAnnotationViewID"
-        
         if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CircleAnnotation {
             annotationView.annotation = annotation
             return annotationView
@@ -130,7 +128,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    internal func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let polyline = overlay as? MKPolyline {
             let testlineRenderer = MKPolylineRenderer(polyline: polyline)
             testlineRenderer.strokeColor = Colors.lightOrange.value
@@ -139,8 +137,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         fatalError("Something wrong...")
     }
-
-    
 }
 
 protocol CoordinateComputation {
