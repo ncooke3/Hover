@@ -14,6 +14,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
     var mapView = MKMapView()
     var locationGraph: Graph!
     
+    var flightpathPolyline = MKGeodesicPolyline()
+    var planeAnnotation: MKPointAnnotation!
+    var planeAnnotationPosition = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,19 +65,57 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         
         let locations = path.map( { $0.coordinates } )
-        let polyline = MKPolyline(coordinates: locations, count: locations.count)
-        mapView.addOverlay(polyline)
+        let geodesicPolyline = MKGeodesicPolyline(coordinates: locations, count: locations.count)
+        mapView.addOverlay(geodesicPolyline)
+        
+        self.flightpathPolyline = MKGeodesicPolyline(coordinates: locations, count: 3)
+
+        let planeAnnotation = MKPointAnnotation()
+        planeAnnotation.title = "Drone"
+        
+        mapView.addAnnotation(planeAnnotation)
+        
+        self.planeAnnotation = planeAnnotation
+        self.updatePlanePosition()
         
     }
+    
+    @objc func updatePlanePosition() {
+        let step = 100
+
+        guard planeAnnotationPosition + step < self.flightpathPolyline.pointCount else { return }
+
+        let points = flightpathPolyline.points()
+        self.planeAnnotationPosition += step
+        let nextMapPoint = points[planeAnnotationPosition]
+        
+        self.planeAnnotation.coordinate = nextMapPoint.coordinate
+        
+        perform(#selector(updatePlanePosition), with: nil, afterDelay: 0.3)
+    }
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard annotation is MKPointAnnotation else { return nil }
         
-        let circleAnnotationView = self.circleAnnotationView(in: mapView, for: annotation)
+        if annotation.title == "Drone" {
+            let planeIdentifier = "Plane"
+
+            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: planeIdentifier)
+                ?? MKAnnotationView(annotation: annotation, reuseIdentifier: planeIdentifier)
+
+            annotationView.image = UIImage(named: "drone-2")
         
+            return annotationView
+        }
+        
+
+        let circleAnnotationView = self.circleAnnotationView(in: mapView, for: annotation)
+
         return circleAnnotationView
     }
+    
     
     private func circleAnnotationView(in mapView: MKMapView, for annotation: MKAnnotation) -> CircleAnnotation {
         let identifier = "circleAnnotationViewID"
