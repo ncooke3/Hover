@@ -89,15 +89,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        //Return an `MKPolylineRenderer` for the `MKPolyline` in the `MKMapViewDelegate`s method
         if let polyline = overlay as? MKPolyline {
             let testlineRenderer = MKPolylineRenderer(polyline: polyline)
-            testlineRenderer.strokeColor = .blue
-            testlineRenderer.lineWidth = 2.0
+            testlineRenderer.strokeColor = Colors.orange.value
+            testlineRenderer.lineWidth = 1.5
             return testlineRenderer
         }
         fatalError("Something wrong...")
-        //return MKOverlayRenderer()
     }
 
     
