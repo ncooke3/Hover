@@ -9,10 +9,6 @@
 import UIKit
 import MapKit
 
-    // New York  40.7128° N, 74.0060° W
-    // Vancouver 49.2827° N, 123.1207° W
-    // Monterrey 25.6866° N, 100.3161° W
-
 class ViewController: UIViewController, MKMapViewDelegate {
 
     var mapView = MKMapView()
@@ -70,28 +66,33 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.addOverlay(polyline)
         
     }
-
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
         guard annotation is MKPointAnnotation else { return nil }
         
-        let identifier = "Annotation"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        let circleAnnotationView = self.circleAnnotationView(in: mapView, for: annotation)
         
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView!.canShowCallout = true
+        return circleAnnotationView
+    }
+    
+    private func circleAnnotationView(in mapView: MKMapView, for annotation: MKAnnotation) -> CircleAnnotation {
+        let identifier = "circleAnnotationViewID"
+        
+        if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CircleAnnotation {
+            annotationView.annotation = annotation
+            return annotationView
         } else {
-            annotationView!.annotation = annotation
+            let circleAnnotationView = CircleAnnotation(annotation: annotation, reuseIdentifier: identifier)
+            circleAnnotationView.canShowCallout = true
+            return circleAnnotationView
         }
-
-        return annotationView
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let polyline = overlay as? MKPolyline {
             let testlineRenderer = MKPolylineRenderer(polyline: polyline)
-            testlineRenderer.strokeColor = Colors.orange.value
+            testlineRenderer.strokeColor = Colors.lightOrange.value
             testlineRenderer.lineWidth = 1.5
             return testlineRenderer
         }
@@ -143,7 +144,6 @@ extension Vertex: Positionable {
     
 }
 
-
 extension CLLocationCoordinate2D {
     
     func distance(from: CLLocationCoordinate2D) -> CLLocationDistance {
@@ -153,6 +153,22 @@ extension CLLocationCoordinate2D {
     
 }
 
-
-
+class CircleAnnotation: MKAnnotationView {
+    private let annotationFrame: CGRect = CGRect(x: 0, y: 0, width: 10, height: 10)
+    
+    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        self.frame = annotationFrame
+        self.backgroundColor = .clear
+        
+        let circleLayer = CAShapeLayer()
+        circleLayer.path = UIBezierPath(ovalIn: annotationFrame).cgPath
+        circleLayer.fillColor = Colors.orange.withAlpha(0.9).cgColor
+        self.layer.addSublayer(circleLayer)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) not implemented!")
+    }
+}
 
