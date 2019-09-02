@@ -81,199 +81,7 @@ extension ViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard view.annotation != nil else { return }
         
-        if view is CircleAnnotation {
-            
-            let circleAnnotation = view as! CircleAnnotation
-            
-            // 🤯 allows for user to tap annotation again w/o having to tap somewhere else between
-            mapView.deselectAnnotation(circleAnnotation.annotation, animated: false)
-            
-            
-            /// Logic
-            var containsStart: Bool = false
-            var containsGoal: Bool = false
-            
-            for annotation in mapView.annotations {
-                //guard let annotationView = mapView.view(for: annotation) else { print("here"); return }
-                //guard annotationView is CircleAnnotation else { print("there"); return }
-                if let annotationView = mapView.view(for: annotation) {
-                    if annotationView is CircleAnnotation {
-                        let forcedCircleAnnotation = annotationView as! CircleAnnotation
-                        if forcedCircleAnnotation.state == .start { containsStart = true }
-                        if forcedCircleAnnotation.state == .goal { containsGoal = true }
-                    }
-                }
-            }
-
-            
-            // atp, containsStart & containsGoal are set
-            
-            var newState: CircleAnnotation.SelectedState = .unselected // as an intial value ¯\_(ツ)_/¯
-            
-            /// Both do not exist
-            if !containsStart && !containsGoal {
-                // set tapped to S
-                newState = .start
-                
-                // ENLARGE S
-                //ENLARGE S
-                circleAnnotation.layer.sublayers?.forEach {
-                    layer in
-                    if layer is CAShapeLayer {
-                        let gotem = layer as! CAShapeLayer
-                        print("hello")
-                        DispatchQueue.main.async {
-                            UIView.animate(withDuration: 0.3) {
-                                gotem.fillColor = UIColor.green.withAlphaComponent(0.9).cgColor
-                                view.transform = CGAffineTransform(scaleX: 1.75, y: 1.75)
-                            }
-                        }
-
-                    }
-                }
-                
-
-                
-            } else
-            
-            /// Both exist
-            if containsStart && containsGoal {
-                // if S was tapped -> set IT to U
-                // if G was tapped -> set IT to U
-                // if U was tapped -> do nothing!
-                
-                // ternary: tapped.state = U
-                newState = .unselected
-                
-                //if circleAnnotation.state == .start || circleAnnotation.state == .goal {
-                    
-                    
-                    /// SHRINK S / G
-                    circleAnnotation.layer.sublayers?.forEach {
-                        layer in
-                        if layer is CAShapeLayer {
-                            let gotem = layer as! CAShapeLayer
-                            
-                            UIView.animate(withDuration: 0.3) {
-                                gotem.fillColor = Colors.orange.withAlpha(0.9).cgColor
-                                view.transform = CGAffineTransform.identity
-                            }
-                            
-                            
-                        }
-                    }
-                    
-
-
-            } else
-            
-            // atp, either Start or Goal exists
-            if containsStart {
-                // if S was tapped -> set IT to U
-                // ELSE -> set IT to G!!!!!
-                
-                // ternary: tapped.state = tapped.state == S ? U : G
-                //newState = circleAnnotation.state == .start ? .unselected : .goal
-                
-                if circleAnnotation.state == .start {
-                    newState = .unselected
-                    
-                    // SHRINK S
-                    /// SHRINK S / G
-                    circleAnnotation.layer.sublayers?.forEach {
-                        layer in
-                        if layer is CAShapeLayer {
-                            let gotem = layer as! CAShapeLayer
-                            
-                            UIView.animate(withDuration: 0.3) {
-                                gotem.fillColor = Colors.orange.withAlpha(0.9).cgColor
-                                view.transform = CGAffineTransform.identity
-                            }
-                            
-                            
-                        }
-                    }
-                    
-                    
-                } else {
-                    newState = .goal
-                    
-                    // ENLARGE G
-                    /// ENLARGE G
-                    circleAnnotation.layer.sublayers?.forEach {
-                        layer in
-                        if layer is CAShapeLayer {
-                            let gotem = layer as! CAShapeLayer
-                            
-                            UIView.animate(withDuration: 0.3) {
-                                gotem.fillColor = Colors.red.withAlpha(0.9).cgColor
-                                view.transform = CGAffineTransform(scaleX: 1.75, y: 1.75)
-                            }
-                            
-                            
-                        }
-                    }
-                }
-                
-   
-                
-            } else
-            
-            if containsGoal {
-                // if G was tapped -> set IT to U
-                // ELSE -> set IT to G
-                
-                // ternary: tapped.state = tapped.state == G ? U : S
-                //newState = circleAnnotation.state == .goal ? .unselected : .start
-                
-                if circleAnnotation.state == .goal {
-                    newState = .unselected
-                    
-                    //SHRINK G
-                    /// SHRINK S / G
-                    circleAnnotation.layer.sublayers?.forEach {
-                        layer in
-                        if layer is CAShapeLayer {
-                            let gotem = layer as! CAShapeLayer
-                            
-                            UIView.animate(withDuration: 0.3) {
-                                gotem.fillColor = Colors.orange.withAlpha(0.9).cgColor
-                                view.transform = CGAffineTransform.identity
-                            }
-                            
-                            
-                        }
-                    }
-                    
- 
-                } else {
-                    newState = .start
-                    
-                    //ENLARGE S
-                    circleAnnotation.layer.sublayers?.forEach {
-                        layer in
-                        if layer is CAShapeLayer {
-                            let gotem = layer as! CAShapeLayer
-                            
-                            UIView.animate(withDuration: 0.3) {
-                                gotem.fillColor = UIColor.green.withAlphaComponent(0.9).cgColor
-                                view.transform = CGAffineTransform(scaleX: 1.75, y: 1.75)
-                            }
-                        }
-                    }
-                    
-                    
-                }
-            }
-            
-
-            
-            
-            // FINALLY SET STATE AND DABBBBBB
-            circleAnnotation.state = newState
-
-                
-            }
+        handleAnnotationStateAndStyle(view, mapView)
     }
 
 
@@ -403,6 +211,36 @@ class CircleAnnotation: MKAnnotationView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) not implemented!")
     }
+    
+    public func shrink(the view: MKAnnotationView) {
+        self.layer.sublayers?.forEach {
+            layer in
+            if layer is CAShapeLayer {
+                let gotem = layer as! CAShapeLayer
+                
+                UIView.animate(withDuration: 0.1) {
+                    gotem.fillColor = Colors.orange.withAlpha(0.9).cgColor
+                    view.transform = CGAffineTransform.identity
+                }
+            }
+        }
+    }
+    
+    public func expand(the view: MKAnnotationView, with cgcolor: CGColor) {
+        self.layer.sublayers?.forEach {
+            layer in
+            if layer is CAShapeLayer {
+                let gotem = layer as! CAShapeLayer
+                
+                UIView.animate(withDuration: 0.1) {
+                    gotem.fillColor = cgcolor
+                    view.transform = CGAffineTransform(scaleX: 1.75, y: 1.75)
+                }
+            }
+        }
+    }
+
+    
 }
 
 extension MKMapView {
@@ -432,5 +270,73 @@ extension MKMapView {
             }
         }
     }
+    
+}
+
+extension ViewController {
+    
+    private func handleAnnotationStateAndStyle(_ view: MKAnnotationView, _ mapView: MKMapView) {
+        if view is CircleAnnotation {
+            
+            let circleAnnotation = view as! CircleAnnotation
+            
+            // 🤯 allows for user to tap annotation again w/o having to tap somewhere else between
+            mapView.deselectAnnotation(circleAnnotation.annotation, animated: false)
+            
+            /// Logic
+            var containsStart: Bool = false
+            var containsGoal: Bool = false
+            
+            for annotation in mapView.annotations {
+                if let annotationView = mapView.view(for: annotation) {
+                    if annotationView is CircleAnnotation {
+                        let forcedCircleAnnotation = annotationView as! CircleAnnotation
+                        if forcedCircleAnnotation.state == .start { containsStart = true }
+                        if forcedCircleAnnotation.state == .goal { containsGoal = true }
+                    }
+                }
+            }
+            
+            
+            var newState: CircleAnnotation.SelectedState = .unselected // as an intial value ¯\_(ツ)_/¯
+            
+            
+            if !containsStart && !containsGoal {
+                newState = .start
+                circleAnnotation.expand(the: view, with: UIColor.green.withAlphaComponent(0.9).cgColor)
+                
+            } else if containsStart && containsGoal {
+                newState = .unselected
+                circleAnnotation.shrink(the: view)
+                
+            } else if containsStart {
+                if circleAnnotation.state == .start {
+                    newState = .unselected
+                    circleAnnotation.shrink(the: view)
+                    
+                } else {
+                    newState = .goal
+                    circleAnnotation.expand(the: view, with: Colors.red.withAlpha(0.9).cgColor)
+                    
+                }
+                
+            } else if containsGoal {
+                if circleAnnotation.state == .goal {
+                    newState = .unselected
+                    circleAnnotation.shrink(the: view)
+                    
+                } else {
+                    newState = .start
+                    circleAnnotation.expand(the: view, with: UIColor.green.withAlphaComponent(0.9).cgColor)
+                    
+                }
+            }
+            
+            // FINALLY SET STATE AND DABBBBBB
+            circleAnnotation.state = newState
+            
+        }
+    }
+    
     
 }
