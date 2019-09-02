@@ -41,11 +41,11 @@ let Atlanta      = Vertex(name: "Atlanta", latitude: 33.7490, longitude: -84.388
 let SaltLake     = Vertex(name: "Salt Lake City", latitude: 40.7608, longitude: -111.8910)
 let Denver       = Vertex(name: "Denver", latitude: 39.7392, longitude: -104.9903)
 let Miami        = Vertex(name: "Miami", latitude: 25.7617, longitude: -80.1918)
-let Cancun       = Vertex(name: "cancun", latitude: 21.1619, longitude: -86.8515)
+let Cancun       = Vertex(name: "Cancun", latitude: 21.1619, longitude: -86.8515)
 let Washington   = Vertex(name: "Washington DC", latitude: 38.9072, longitude: -77.0369)
 
 /// Georgia Tech Places
-let TechTower    = Vertex(name: "TechTower", latitude: 33.7749, longitude: -84.3964)
+let TechTower    = Vertex(name: "Tech Tower", latitude: 33.7749, longitude: -84.3964)
 let Clough       = Vertex(name: "Clough", latitude: 33.7749, longitude: -84.3964)
 let Paper        = Vertex(name: "Paper", latitude: 33.7810, longitude: -84.4046)
 let Ferst        = Vertex(name: "Ferst", latitude: 33.7750, longitude: -84.3993)

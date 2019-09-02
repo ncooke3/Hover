@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0E01B3AE2A9A315A3646A0 /* Pods_GraphtasticRoutesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601FE0FC4A42A11E8FDE785A /* Pods_GraphtasticRoutesTests.framework */; };
+		7DD5446261DEBAF674776811 /* Pods_GraphtasticRoutes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB97BFA07EB679215203F84 /* Pods_GraphtasticRoutes.framework */; };
 		EA687435231A1E8F0099DAC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687434231A1E8F0099DAC4 /* AppDelegate.swift */; };
 		EA687437231A1E8F0099DAC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687436231A1E8F0099DAC4 /* ViewController.swift */; };
 		EA68743C231A1E900099DAC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA68743B231A1E900099DAC4 /* Assets.xcassets */; };
@@ -18,6 +20,10 @@
 		EA687475231C439B0099DAC4 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687474231C439B0099DAC4 /* Graphs.swift */; };
 		EA687477231C479A0099DAC4 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687476231C479A0099DAC4 /* Locations.swift */; };
 		EA687479231C73460099DAC4 /* LocationVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687478231C73460099DAC4 /* LocationVertex.swift */; };
+		EAC9288A231CA5EC006FF88C /* drone_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = EAC92889231CA5EC006FF88C /* drone_lottie.json */; };
+		EAC92890231CCA84006FF88C /* earth_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = EAC9288F231CCA84006FF88C /* earth_lottie.json */; };
+		EAC92892231CDE32006FF88C /* Rationale-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAC92891231CDCF1006FF88C /* Rationale-Regular.ttf */; };
+		EAC92894231CE417006FF88C /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC92893231CE417006FF88C /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BB97BFA07EB679215203F84 /* Pods_GraphtasticRoutes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GraphtasticRoutes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AD57B071170047FEB411DFD /* Pods-GraphtasticRoutes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphtasticRoutes.release.xcconfig"; path = "Target Support Files/Pods-GraphtasticRoutes/Pods-GraphtasticRoutes.release.xcconfig"; sourceTree = "<group>"; };
+		4F85684DAF27468AA70EEA8D /* Pods-GraphtasticRoutes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphtasticRoutes.debug.xcconfig"; path = "Target Support Files/Pods-GraphtasticRoutes/Pods-GraphtasticRoutes.debug.xcconfig"; sourceTree = "<group>"; };
+		601FE0FC4A42A11E8FDE785A /* Pods_GraphtasticRoutesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GraphtasticRoutesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		671AD0B65AC0F8DA8911D9C0 /* Pods-GraphtasticRoutesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphtasticRoutesTests.release.xcconfig"; path = "Target Support Files/Pods-GraphtasticRoutesTests/Pods-GraphtasticRoutesTests.release.xcconfig"; sourceTree = "<group>"; };
 		EA687431231A1E8F0099DAC4 /* GraphtasticRoutes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphtasticRoutes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA687434231A1E8F0099DAC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA687436231A1E8F0099DAC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +57,11 @@
 		EA687474231C439B0099DAC4 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		EA687476231C479A0099DAC4 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		EA687478231C73460099DAC4 /* LocationVertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVertex.swift; sourceTree = "<group>"; };
+		EAC92889231CA5EC006FF88C /* drone_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = drone_lottie.json; sourceTree = "<group>"; };
+		EAC9288F231CCA84006FF88C /* earth_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = earth_lottie.json; sourceTree = "<group>"; };
+		EAC92891231CDCF1006FF88C /* Rationale-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rationale-Regular.ttf"; sourceTree = "<group>"; };
+		EAC92893231CE417006FF88C /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		F3C8DD95DF33195ACCF6694D /* Pods-GraphtasticRoutesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphtasticRoutesTests.debug.xcconfig"; path = "Target Support Files/Pods-GraphtasticRoutesTests/Pods-GraphtasticRoutesTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DD5446261DEBAF674776811 /* Pods_GraphtasticRoutes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,18 +77,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0E01B3AE2A9A315A3646A0 /* Pods_GraphtasticRoutesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58AC5E110701AD73A47ADD47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0BB97BFA07EB679215203F84 /* Pods_GraphtasticRoutes.framework */,
+				601FE0FC4A42A11E8FDE785A /* Pods_GraphtasticRoutesTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2EA21A0374347939CE745FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F85684DAF27468AA70EEA8D /* Pods-GraphtasticRoutes.debug.xcconfig */,
+				2AD57B071170047FEB411DFD /* Pods-GraphtasticRoutes.release.xcconfig */,
+				F3C8DD95DF33195ACCF6694D /* Pods-GraphtasticRoutesTests.debug.xcconfig */,
+				671AD0B65AC0F8DA8911D9C0 /* Pods-GraphtasticRoutesTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		EA687428231A1E8E0099DAC4 = {
 			isa = PBXGroup;
 			children = (
 				EA687433231A1E8F0099DAC4 /* GraphtasticRoutes */,
 				EA687448231A1E910099DAC4 /* GraphtasticRoutesTests */,
 				EA687432231A1E8F0099DAC4 /* Products */,
+				D2EA21A0374347939CE745FE /* Pods */,
+				58AC5E110701AD73A47ADD47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,8 +133,12 @@
 				EA687470231B64060099DAC4 /* HoverColors.swift */,
 				EA687456231A20FC0099DAC4 /* Graph.swift */,
 				EA687474231C439B0099DAC4 /* Graphs.swift */,
+				EAC92891231CDCF1006FF88C /* Rationale-Regular.ttf */,
+				EAC92893231CE417006FF88C /* SplashView.swift */,
 				EA687476231C479A0099DAC4 /* Locations.swift */,
 				EA687454231A1F560099DAC4 /* Vertex.swift */,
+				EAC92889231CA5EC006FF88C /* drone_lottie.json */,
+				EAC9288F231CCA84006FF88C /* earth_lottie.json */,
 				EA687472231C21C20099DAC4 /* Edge.swift */,
 				EA68743B231A1E900099DAC4 /* Assets.xcassets */,
 				EA687440231A1E910099DAC4 /* Info.plist */,
@@ -118,9 +162,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA68744E231A1E910099DAC4 /* Build configuration list for PBXNativeTarget "GraphtasticRoutes" */;
 			buildPhases = (
+				B55A7F6EA62366222BD6BA41 /* [CP] Check Pods Manifest.lock */,
 				EA68742D231A1E8F0099DAC4 /* Sources */,
 				EA68742E231A1E8F0099DAC4 /* Frameworks */,
 				EA68742F231A1E8F0099DAC4 /* Resources */,
+				D5A7F205862F1DC4E5339DB4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +181,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA687451231A1E910099DAC4 /* Build configuration list for PBXNativeTarget "GraphtasticRoutesTests" */;
 			buildPhases = (
+				7CB6D91E7E09FA639B746F78 /* [CP] Check Pods Manifest.lock */,
 				EA687441231A1E910099DAC4 /* Sources */,
 				EA687442231A1E910099DAC4 /* Frameworks */,
 				EA687443231A1E910099DAC4 /* Resources */,
@@ -193,6 +240,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA68743C231A1E900099DAC4 /* Assets.xcassets in Resources */,
+				EAC92890231CCA84006FF88C /* earth_lottie.json in Resources */,
+				EAC9288A231CA5EC006FF88C /* drone_lottie.json in Resources */,
+				EAC92892231CDE32006FF88C /* Rationale-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +254,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7CB6D91E7E09FA639B746F78 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GraphtasticRoutesTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B55A7F6EA62366222BD6BA41 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GraphtasticRoutes-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5A7F205862F1DC4E5339DB4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GraphtasticRoutes/Pods-GraphtasticRoutes-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GraphtasticRoutes/Pods-GraphtasticRoutes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EA68742D231A1E8F0099DAC4 /* Sources */ = {
@@ -217,6 +336,7 @@
 				EA687435231A1E8F0099DAC4 /* AppDelegate.swift in Sources */,
 				EA687455231A1F560099DAC4 /* Vertex.swift in Sources */,
 				EA687479231C73460099DAC4 /* LocationVertex.swift in Sources */,
+				EAC92894231CE417006FF88C /* SplashView.swift in Sources */,
 				EA687477231C479A0099DAC4 /* Locations.swift in Sources */,
 				EA687471231B64060099DAC4 /* HoverColors.swift in Sources */,
 			);
@@ -359,6 +479,7 @@
 		};
 		EA68744F231A1E910099DAC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F85684DAF27468AA70EEA8D /* Pods-GraphtasticRoutes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -377,6 +498,7 @@
 		};
 		EA687450231A1E910099DAC4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AD57B071170047FEB411DFD /* Pods-GraphtasticRoutes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -395,6 +517,7 @@
 		};
 		EA687452231A1E910099DAC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3C8DD95DF33195ACCF6694D /* Pods-GraphtasticRoutesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -416,6 +539,7 @@
 		};
 		EA687453231A1E910099DAC4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 671AD0B65AC0F8DA8911D9C0 /* Pods-GraphtasticRoutesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
