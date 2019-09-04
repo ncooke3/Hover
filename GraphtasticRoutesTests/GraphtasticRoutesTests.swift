@@ -26,6 +26,14 @@ class GraphtasticRoutesTests: XCTestCase {
         testGraph = nil
     }
     
+    override class func setUp() {
+        super.setUp()
+    }
+    
+    override class func tearDown() {
+        super.tearDown()
+    }
+    
     func testEmptyGraph() {
         testGraph = Graph()
         XCTAssertThrowsError( try testGraph.aStarSearch(from: Vertex(), to: Vertex()) ) { error in

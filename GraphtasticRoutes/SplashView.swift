@@ -93,7 +93,7 @@ class SplashView: UIView {
     
     
     private func setupView() {
-        backgroundColor = UIColor(red:0.25, green:0.53, blue:0.87, alpha:1.0)
+        backgroundColor = Colors.custom(hexString: "#3f87dd", alpha: 1.0).value // #3f87ddff is pretty
         addSubview(hoverLabel)
         addSubview(tapLabel)
         addSubview(circleView)

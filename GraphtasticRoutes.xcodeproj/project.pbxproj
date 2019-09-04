@@ -24,6 +24,9 @@
 		EAC92890231CCA84006FF88C /* earth_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = EAC9288F231CCA84006FF88C /* earth_lottie.json */; };
 		EAC92892231CDE32006FF88C /* Rationale-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAC92891231CDCF1006FF88C /* Rationale-Regular.ttf */; };
 		EAC92894231CE417006FF88C /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC92893231CE417006FF88C /* SplashView.swift */; };
+		EAC9289A231D9269006FF88C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC92899231D9269006FF88C /* GradientView.swift */; };
+		EAC9289C231DB538006FF88C /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC9289B231DB538006FF88C /* CustomButton.swift */; };
+		EAC9289E231E0F2D006FF88C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC9289D231E0F2D006FF88C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		EAC9288F231CCA84006FF88C /* earth_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = earth_lottie.json; sourceTree = "<group>"; };
 		EAC92891231CDCF1006FF88C /* Rationale-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rationale-Regular.ttf"; sourceTree = "<group>"; };
 		EAC92893231CE417006FF88C /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		EAC92899231D9269006FF88C /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		EAC9289B231DB538006FF88C /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		EAC9289D231E0F2D006FF88C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3C8DD95DF33195ACCF6694D /* Pods-GraphtasticRoutesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphtasticRoutesTests.debug.xcconfig"; path = "Target Support Files/Pods-GraphtasticRoutesTests/Pods-GraphtasticRoutesTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +136,8 @@
 				EA687434231A1E8F0099DAC4 /* AppDelegate.swift */,
 				EA687436231A1E8F0099DAC4 /* ViewController.swift */,
 				EA687478231C73460099DAC4 /* LocationVertex.swift */,
+				EAC92899231D9269006FF88C /* GradientView.swift */,
+				EAC9289B231DB538006FF88C /* CustomButton.swift */,
 				EA687470231B64060099DAC4 /* HoverColors.swift */,
 				EA687456231A20FC0099DAC4 /* Graph.swift */,
 				EA687474231C439B0099DAC4 /* Graphs.swift */,
@@ -142,6 +150,7 @@
 				EA687472231C21C20099DAC4 /* Edge.swift */,
 				EA68743B231A1E900099DAC4 /* Assets.xcassets */,
 				EA687440231A1E910099DAC4 /* Info.plist */,
+				EAC9289D231E0F2D006FF88C /* LaunchScreen.storyboard */,
 			);
 			path = GraphtasticRoutes;
 			sourceTree = "<group>";
@@ -242,6 +251,7 @@
 				EA68743C231A1E900099DAC4 /* Assets.xcassets in Resources */,
 				EAC92890231CCA84006FF88C /* earth_lottie.json in Resources */,
 				EAC9288A231CA5EC006FF88C /* drone_lottie.json in Resources */,
+				EAC9289E231E0F2D006FF88C /* LaunchScreen.storyboard in Resources */,
 				EAC92892231CDE32006FF88C /* Rationale-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,6 +347,8 @@
 				EA687455231A1F560099DAC4 /* Vertex.swift in Sources */,
 				EA687479231C73460099DAC4 /* LocationVertex.swift in Sources */,
 				EAC92894231CE417006FF88C /* SplashView.swift in Sources */,
+				EAC9289C231DB538006FF88C /* CustomButton.swift in Sources */,
+				EAC9289A231D9269006FF88C /* GradientView.swift in Sources */,
 				EA687477231C479A0099DAC4 /* Locations.swift in Sources */,
 				EA687471231B64060099DAC4 /* HoverColors.swift in Sources */,
 			);
@@ -482,6 +494,7 @@
 			baseConfigurationReference = 4F85684DAF27468AA70EEA8D /* Pods-GraphtasticRoutes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K2A6VGGX23;
 				INFOPLIST_FILE = GraphtasticRoutes/Info.plist;
@@ -491,6 +504,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ncooke.GraphtasticRoutes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -501,6 +515,7 @@
 			baseConfigurationReference = 2AD57B071170047FEB411DFD /* Pods-GraphtasticRoutes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K2A6VGGX23;
 				INFOPLIST_FILE = GraphtasticRoutes/Info.plist;
@@ -510,6 +525,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ncooke.GraphtasticRoutes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

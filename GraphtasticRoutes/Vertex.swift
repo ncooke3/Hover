@@ -12,7 +12,7 @@ class Vertex {
     
     var key: String?
     var edges: Set<Edge>
-    var parent: Vertex?
+    weak var parent: Vertex?
     var g: Int = 0
     var h: Int = 0
     var f: Int = 0
@@ -34,7 +34,7 @@ class Vertex {
 
 extension Vertex: Equatable {
     static func == (lhs: Vertex, rhs: Vertex) -> Bool {
-        return lhs.key == rhs.key// && lhs.edges == rhs.edges
+        return lhs.key == rhs.key //&& lhs.edges == rhs.edges
     }
 }
 

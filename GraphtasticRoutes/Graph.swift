@@ -67,6 +67,9 @@ public class Graph {
     /// Search graph from start vertex to end vertex and return path taken.
     func aStarSearch(from startVertex: Vertex, to endVertex: Vertex) throws -> [Vertex] {
         
+        print("startingVertex parent", startVertex.parent?.key)
+        print("endVertex parent", endVertex.parent?.key)
+        
         // Handle Errors
         guard self.canvas.isNotEmpty() else { throw GraphError.emptyGraph }
         
@@ -103,10 +106,13 @@ public class Graph {
             if currentVertex.key == endVertex.key { // TODO: compute equality based on position?
                 var path: [Vertex] = [Vertex]()
                 var backtrackingVertex: Vertex? = currentVertex
-                while backtrackingVertex != nil {
+                while backtrackingVertex?.key != startVertex.key { // does this avoid the retain cycle?
+                //while backtrackingVertex != nil {
                     path.append(backtrackingVertex!)
+                    print(backtrackingVertex?.key)
                     backtrackingVertex = backtrackingVertex?.parent
                 }
+                path.append(backtrackingVertex!) // should add parent
                 return path.reversed()
             }
             
