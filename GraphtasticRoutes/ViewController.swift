@@ -136,25 +136,6 @@ class ViewController: UIViewController {
     var planeAnnotation: MKPointAnnotation!
     var planeAnnotationPosition = 0
     
-    var userInputToggle: Bool! {
-        didSet {
-            button.isUserInteractionEnabled = userInputToggle
-        }
-    }
-    
-    var startVertex: Vertex? {
-        didSet {
-            userInputToggle = startVertex != nil && goalVertex != nil
-            
-        }
-    }
-    
-    var goalVertex: Vertex? {
-        didSet {
-            userInputToggle = startVertex != nil && goalVertex != nil
-        }
-    }
-    
     lazy var northAmericaButton = CustomButton()
     lazy var globalButton = CustomButton()
     lazy var georgiaTechButton = CustomButton()
@@ -241,6 +222,29 @@ class ViewController: UIViewController {
     
     var masterPath: [Vertex] = []
     var geodesicPolyline: MKGeodesicPolyline!
+    
+    
+    var userInputToggle: Bool! {
+        didSet {
+            button.isUserInteractionEnabled = userInputToggle
+        }
+    }
+    
+    var startVertex: Vertex? {
+        didSet {
+            userInputToggle = startVertex != nil && goalVertex != nil
+            
+        }
+    }
+    
+    var goalVertex: Vertex? {
+        didSet {
+            userInputToggle = startVertex != nil && goalVertex != nil
+        }
+    }
+    
+    var startVertexAnnotation: MKAnnotation?
+    var goalVertexAnnotation: MKAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -422,12 +426,32 @@ class ViewController: UIViewController {
         button.onTap = {
             if self.button.label.attributedText?.string == "Find Shortest Path" {
                 
+                
+                
+                let startVertexAnnotationView = self.mapView.view(for: self.startVertexAnnotation!) as! CircleAnnotation
+                print("This SHOULD BE SELECTED", startVertexAnnotationView.state)
+                
+                startVertexAnnotationView.state = .unselected
+                
+                startVertexAnnotationView.shrink(the: startVertexAnnotationView)
+                
+                
+                ///////////
+                let goalVertexAnnotationView = self.mapView.view(for: self.goalVertexAnnotation!) as! CircleAnnotation
+                print("This SHOULD BE SELECTED", goalVertexAnnotationView.state)
+                goalVertexAnnotationView.state = .unselected
+                
+                goalVertexAnnotationView.shrink(the: goalVertexAnnotationView)
+
+                
+                
+                
                 // we need to reset
                 self.startVertex = nil
                 self.goalVertex = nil
                 //self.mapView.reloadInputViews()
-                self.mapView.removeAnnotations(self.mapView.annotations)
-                self.mapView.addAnnotations(from: self.locationGraph)
+//                self.mapView.removeAnnotations(self.mapView.annotations)
+//                self.mapView.addAnnotations(from: self.locationGraph)
                 
                 self.mapView.removeOverlay(self.geodesicPolyline)
                 
@@ -681,7 +705,7 @@ class CircleAnnotation: MKAnnotationView {
 
 
 class VertexPointAnnotation: MKPointAnnotation {
-    weak var associatedVertex: Vertex?
+    var associatedVertex: Vertex?
 }
 
 extension MKMapView {
@@ -746,7 +770,7 @@ extension ViewController {
             if !containsStart && !containsGoal {
                 newState = .start
                 circleAnnotation.expand(the: view, with: Colors.custom(hexString: "#B2D080", alpha: 0.9).value.cgColor)
-
+                startVertexAnnotation = circleAnnotation.annotation
                 startVertex =  vertexAnnotation.associatedVertex
 
             } else if containsStart && containsGoal {
@@ -755,10 +779,12 @@ extension ViewController {
                 
                 if circleAnnotation.state == .start {
                     // ✳️
+                    startVertexAnnotation = nil
                     startVertex = nil
                     
                 } else if circleAnnotation.state == .goal {
                     // 🛑
+                    goalVertexAnnotation = nil
                     goalVertex = nil
                 }
                 
@@ -767,12 +793,14 @@ extension ViewController {
                     newState = .unselected
                     circleAnnotation.shrink(the: view)
                     // ✳️
+                    startVertexAnnotation = nil
                     startVertex = nil
                     
                 } else {
                     newState = .goal
                     circleAnnotation.expand(the: view, with: Colors.custom(hexString: "#ff6348", alpha: 0.9).value.cgColor)
                     // 🛑
+                    goalVertexAnnotation = circleAnnotation.annotation
                     goalVertex = vertexAnnotation.associatedVertex
                     
                 }
@@ -781,11 +809,13 @@ extension ViewController {
                 if circleAnnotation.state == .goal {
                     newState = .unselected
                     circleAnnotation.shrink(the: view)
+                    goalVertexAnnotation = nil
                     goalVertex = nil
                     
                 } else {
                     newState = .start
                     circleAnnotation.expand(the: view, with: Colors.custom(hexString: "#B2D080", alpha: 0.9).value.cgColor)
+                    startVertexAnnotation = circleAnnotation.annotation
                     startVertex = vertexAnnotation.associatedVertex
                 }
             }
@@ -886,7 +916,7 @@ extension ViewController {
             bubbleView.frame.origin.x += bubbleSize.width + 100
             label.frame.origin.x += bubbleSize.width + 100
         }) { (_) in
-            UIView.animate(withDuration: 1.0, delay: 3.0, options: [.curveEaseIn], animations: {
+            UIView.animate(withDuration: 1.0, delay: 5.0, options: [.curveEaseIn], animations: {
                 bubbleView.frame.origin.x -= bubbleSize.width + 100
                 label.frame.origin.x -= bubbleSize.width + 100
             }, completion: nil)
@@ -904,7 +934,7 @@ extension ViewController {
             containerView.frame.origin.x += bubbleSize.width + 100
             rotatingImageView.transform = CGAffineTransform(rotationAngle: .pi / 16)
         }) { (_) in
-            UIView.animate(withDuration: 1.0, delay: 3.0, options: [.curveEaseIn], animations: {
+            UIView.animate(withDuration: 1.0, delay: 5.0, options: [.curveEaseIn], animations: {
                 containerView.frame.origin.x -= bubbleSize.width + 100
                 rotatingImageView.transform = .identity
             }, completion: nil)
