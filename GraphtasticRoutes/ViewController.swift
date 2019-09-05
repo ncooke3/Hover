@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         return label
     }()
     
-    var countLabel = AnimatedLabel()
+    var shortestDistanceLabel = AnimatedLabel()
 
     private lazy var momentumView: GradientView = {
         let view = GradientView()
@@ -90,6 +90,9 @@ class ViewController: UIViewController {
     var geodesicPolyline: MKGeodesicPolyline!
     var startVertexAnnotation: MKAnnotation?
     var goalVertexAnnotation: MKAnnotation?
+    
+    var canUserEditAnnotations: Bool = true
+    
     
     var userInputToggle: Bool! {
         didSet {
@@ -137,6 +140,9 @@ class ViewController: UIViewController {
         panRecognizer.addTarget(self, action: #selector(panned))
         momentumView.addGestureRecognizer(panRecognizer)
         
+
+
+        
         setupStartViews()
         setupDestinationViews()
         setupGraphTypeLabel()
@@ -144,7 +150,26 @@ class ViewController: UIViewController {
         setupGeorgiaTechButton()
         setupNorthAmericaButton()
         setupShortestPathButton()
-       
+        
+        let distanceLabel = UILabel()
+        distanceLabel.text = "Distance:"
+        distanceLabel.font = UIFont(name: "Rationale-Regular", size: 25)!
+        distanceLabel.textColor = .white
+        distanceLabel.backgroundColor = .clear
+        momentumView.addSubview(distanceLabel)
+        distanceLabel.translatesAutoresizingMaskIntoConstraints = false
+        distanceLabel.topAnchor.constraint(equalTo: destinationLocationLabel.bottomAnchor, constant: 5).isActive = true
+        distanceLabel.leadingAnchor.constraint(equalTo: destinationLocationLabel.leadingAnchor).isActive = true
+        
+        shortestDistanceLabel.font = UIFont(name: "Rationale-Regular", size: 25)!
+        shortestDistanceLabel.sizeToFit()
+        shortestDistanceLabel.backgroundColor = .clear
+        shortestDistanceLabel.textColor = .white
+        momentumView.addSubview(shortestDistanceLabel)
+        shortestDistanceLabel.translatesAutoresizingMaskIntoConstraints = false
+        shortestDistanceLabel.topAnchor.constraint(equalTo: destinationLocationLabel.bottomAnchor, constant: 5).isActive = true
+        shortestDistanceLabel.leadingAnchor.constraint(equalTo: distanceLabel.trailingAnchor, constant: 10).isActive = true
+        
         let unitsLabel = UILabel()
         unitsLabel.text = "miles"
         unitsLabel.font = UIFont(name: "Rationale-Regular", size: 25)!
@@ -152,17 +177,8 @@ class ViewController: UIViewController {
         unitsLabel.backgroundColor = .clear
         momentumView.addSubview(unitsLabel)
         unitsLabel.translatesAutoresizingMaskIntoConstraints = false
-        unitsLabel.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor, constant: -30).isActive = true
-        unitsLabel.centerYAnchor.constraint(equalTo: destinationLocationLabel.centerYAnchor).isActive = true
-        
-        countLabel.font = UIFont(name: "Rationale-Regular", size: 25)!
-        countLabel.sizeToFit()
-        countLabel.backgroundColor = .clear
-        countLabel.textColor = .white
-        momentumView.addSubview(countLabel)
-        countLabel.translatesAutoresizingMaskIntoConstraints = false
-        countLabel.trailingAnchor.constraint(equalTo: unitsLabel.leadingAnchor, constant: -5).isActive = true
-        countLabel.centerYAnchor.constraint(equalTo: destinationLocationLabel.centerYAnchor).isActive = true
+        unitsLabel.topAnchor.constraint(equalTo: destinationLocationLabel.bottomAnchor, constant: 5).isActive = true
+        unitsLabel.leadingAnchor.constraint(equalTo: shortestDistanceLabel.trailingAnchor, constant: 5).isActive = true
         
         northAmericaButton.onTap = {
             print("North America Tapped")
@@ -201,8 +217,12 @@ class ViewController: UIViewController {
                 self.planeAnnotation = MKPointAnnotation()
                 self.planeAnnotationPosition = 0
                 self.masterPath = []
+                self.canUserEditAnnotations = true
+                self.shortestDistanceLabel.stop()
+                self.shortestDistanceLabel.text = "0"
                 
             } else {
+ 
                 guard let path = self.locationGraph.performAStarSearch(from: self.startVertex!, to: self.goalVertex!) else { return }
                 self.masterPath = path
                 let locations = self.masterPath.map( { $0.coordinates } )
@@ -215,12 +235,19 @@ class ViewController: UIViewController {
                 self.mapView.addAnnotation(planeAnnotation)
                 self.planeAnnotation = planeAnnotation
                 
-                if let distance = self.startVertex?.coordinates.distance(from: self.goalVertex!.coordinates) {
-                    self.countLabel.countFromZero(to: Float(distance) )
+                if locations.count > 1 {
+                    var shortestDist: Int = 0
+                
+                    for index in 0..<locations.count - 1 {
+                        shortestDist += locations[index].distance(from: locations[index + 1])
+                    }
+                    
+                    self.shortestDistanceLabel.countFromZero(to: Float(shortestDist) * 0.000621371 )
                 }
-                
-                
+            
                 self.updatePlanePosition()
+                self.canUserEditAnnotations = false
+
             }
 
         }
@@ -283,11 +310,11 @@ class ViewController: UIViewController {
         northAmericaButton.unselectedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
         momentumView.addSubview(northAmericaButton)
         northAmericaButton.translatesAutoresizingMaskIntoConstraints = false
-        northAmericaButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -140).isActive = true
+        northAmericaButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -160).isActive = true
         northAmericaButton.trailingAnchor.constraint(equalTo: globalButton.leadingAnchor, constant: -10).isActive = true
         northAmericaButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         northAmericaButton.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor, constant: 12).isActive = true
-        graphTypeLabel.bottomAnchor.constraint(equalTo: globalButton.topAnchor, constant: -15).isActive = true
+        
     }
     
     private func setupGeorgiaTechButton() {
@@ -298,7 +325,7 @@ class ViewController: UIViewController {
         georgiaTechButton.unselectedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
         momentumView.addSubview(georgiaTechButton)
         georgiaTechButton.translatesAutoresizingMaskIntoConstraints = false
-        georgiaTechButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -140).isActive = true
+        georgiaTechButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -160).isActive = true
         georgiaTechButton.leadingAnchor.constraint(equalTo: globalButton.trailingAnchor, constant: 10).isActive = true
         georgiaTechButton.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor, constant: -12).isActive = true
         georgiaTechButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
@@ -312,7 +339,7 @@ class ViewController: UIViewController {
         globalButton.unselectedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
         momentumView.addSubview(globalButton)
         globalButton.translatesAutoresizingMaskIntoConstraints = false
-        globalButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -140).isActive = true
+        globalButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -160).isActive = true
         globalButton.centerXAnchor.constraint(equalTo: momentumView.centerXAnchor).isActive = true
         globalButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
@@ -333,20 +360,24 @@ class ViewController: UIViewController {
         sourceLocationLabel.leadingAnchor.constraint(equalTo: startDot.trailingAnchor, constant: 10).isActive = true
         sourceLocationLabel.centerYAnchor.constraint(equalTo: startDot.centerYAnchor).isActive = true
         
-        let sourceInfoView = CardView()
-        momentumView.addSubview(sourceInfoView)
-        sourceInfoView.containerView.backgroundColor = Colors.custom(hexString: "#c7ecee", alpha: 0.9).value
-        sourceInfoView.translatesAutoresizingMaskIntoConstraints = false
-        sourceInfoView.topAnchor.constraint(equalTo: sourceLocationLabel.bottomAnchor, constant: 5).isActive = true
-        sourceInfoView.leadingAnchor.constraint(equalTo: startDot.leadingAnchor).isActive = true
-        sourceInfoView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor, constant: -30).isActive = true
-        sourceInfoView.heightAnchor.constraint(equalToConstant: 75).isActive = true
+        
+        let startZeroDistanceLabel = UILabel()
+        startZeroDistanceLabel.text = "Distance:  0 miles"
+        startZeroDistanceLabel.font = UIFont(name: "Rationale-Regular", size: 25)!
+        startZeroDistanceLabel.textColor = .white
+        startZeroDistanceLabel.backgroundColor = .clear
+        momentumView.addSubview(startZeroDistanceLabel)
+        startZeroDistanceLabel.translatesAutoresizingMaskIntoConstraints = false
+        startZeroDistanceLabel.topAnchor.constraint(equalTo: sourceLocationLabel.bottomAnchor, constant: 5).isActive = true
+        startZeroDistanceLabel.leadingAnchor.constraint(equalTo: sourceLocationLabel.leadingAnchor).isActive = true
+        
     }
     
     private func setupGraphTypeLabel() {
         momentumView.addSubview(graphTypeLabel)
         graphTypeLabel.translatesAutoresizingMaskIntoConstraints = false
         graphTypeLabel.centerXAnchor.constraint(equalTo: momentumView.centerXAnchor).isActive = true
+        graphTypeLabel.topAnchor.constraint(equalTo: destinationLocationLabel.bottomAnchor, constant: 100).isActive = true
     }
     
     private func setupDestinationViews() {
@@ -354,7 +385,7 @@ class ViewController: UIViewController {
         momentumView.addSubview(endDot)
         endDot.translatesAutoresizingMaskIntoConstraints = false
         endDot.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor, constant: 30).isActive = true
-        endDot.topAnchor.constraint(equalTo: sourceLocationLabel.bottomAnchor, constant: 155).isActive = true
+        endDot.topAnchor.constraint(equalTo: sourceLocationLabel.bottomAnchor, constant: 130).isActive = true
         endDot.widthAnchor.constraint(equalToConstant: 20).isActive = true
         endDot.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
@@ -364,13 +395,6 @@ class ViewController: UIViewController {
         destinationLocationLabel.leadingAnchor.constraint(equalTo: endDot.trailingAnchor, constant: 10).isActive = true
         destinationLocationLabel.centerYAnchor.constraint(equalTo: endDot.centerYAnchor).isActive = true
         
-        let destinationInfoView = CardView()
-        momentumView.addSubview(destinationInfoView)
-        destinationInfoView.translatesAutoresizingMaskIntoConstraints = false
-        destinationInfoView.topAnchor.constraint(equalTo: destinationLocationLabel.bottomAnchor, constant: 5).isActive = true
-        destinationInfoView.leadingAnchor.constraint(equalTo: endDot.leadingAnchor).isActive = true
-        destinationInfoView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor, constant: -30).isActive = true
-        destinationInfoView.heightAnchor.constraint(equalToConstant: 75).isActive = true
     }
     
     private func setupMomentumView() {
@@ -409,6 +433,7 @@ extension ViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard view.annotation != nil else { return }
+        guard canUserEditAnnotations else { return }
         handleAnnotationStateAndStyle(view, mapView)
     }
 

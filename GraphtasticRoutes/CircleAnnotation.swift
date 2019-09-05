@@ -20,7 +20,6 @@ class CircleAnnotation: MKAnnotationView {
     var state: SelectedState = .unselected
     
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
-        print("we killin it", annotation is VertexPointAnnotation)
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         self.frame = CircleAnnotation.annotationFrame
         self.backgroundColor = .clear

@@ -23,7 +23,7 @@ let Havana       = Vertex(name: "Havana", latitude: 23, longitude: -82)
 let Helsinki     = Vertex(name: "Helsinki", latitude: 60, longitude: 25)
 let HongKong     = Vertex(name: "Hong Kong", latitude: 22, longitude: 114)
 let London       = Vertex(name: "London", latitude: 51, longitude: 0)
-let Moscow       = Vertex(name: "Moscoq", latitude: 55, longitude: 37)
+let Moscow       = Vertex(name: "Moscow", latitude: 55, longitude: 37)
 let Medellin     = Vertex(name: "Medellín", latitude: 6, longitude: -75)
 let Perth        = Vertex(name: "Perth", latitude: -31, longitude: 115)
 
