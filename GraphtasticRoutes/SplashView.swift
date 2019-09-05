@@ -11,6 +11,9 @@ import Lottie
 
 class SplashView: UIView {
     
+    var splashTapped: () -> () = {}
+    var tapRecognizer: UITapGestureRecognizer!
+    
     lazy var hoverLabel: UILabel = {
         let label = UILabel()
         let labelFont = UIFont(name: "Rationale-Regular", size: 72)!
@@ -103,6 +106,20 @@ class SplashView: UIView {
         addSubview(earthAnimation)
         setupLayout()
         handleDroneAnimations()
+        
+        
+        tapRecognizer = UITapGestureRecognizer(target: self.frame, action: #selector(didTap))
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        self.addGestureRecognizer(tapRecognizer)
+        
+        
+        
+        
+    }
+    
+    @objc private func didTap() {
+        splashTapped()
     }
     
     private func setupLayout() {

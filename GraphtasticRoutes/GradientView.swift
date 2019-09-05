@@ -65,3 +65,23 @@ class GradientView: UIView {
     }
     
 }
+
+extension UISpringTimingParameters {
+    
+    public convenience init(damping: CGFloat, response: CGFloat, initialVelocity: CGVector = .zero) {
+        let stiffness = pow(2 * .pi / response, 2)
+        let damp = 4 * .pi * damping / response
+        self.init(mass: 1, stiffness: stiffness, damping: damp, initialVelocity: initialVelocity)
+    }
+    
+}
+
+
+class InstantPanGestureRecognizer: UIPanGestureRecognizer {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+        super.touchesBegan(touches, with: event)
+        self.state = .began
+    }
+    
+}

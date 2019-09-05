@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 enum GraphError: Error {
     case emptyGraph
@@ -67,9 +68,6 @@ public class Graph {
     /// Search graph from start vertex to end vertex and return path taken.
     func aStarSearch(from startVertex: Vertex, to endVertex: Vertex) throws -> [Vertex] {
         
-        print("startingVertex parent", startVertex.parent?.key)
-        print("endVertex parent", endVertex.parent?.key)
-        
         // Handle Errors
         guard self.canvas.isNotEmpty() else { throw GraphError.emptyGraph }
         
@@ -106,17 +104,15 @@ public class Graph {
             if currentVertex.key == endVertex.key { // TODO: compute equality based on position?
                 var path: [Vertex] = [Vertex]()
                 var backtrackingVertex: Vertex? = currentVertex
-                while backtrackingVertex?.key != startVertex.key { // does this avoid the retain cycle?
-                //while backtrackingVertex != nil {
+                while backtrackingVertex?.key != startVertex.key { // this avoid the retain cycle? interesting
                     path.append(backtrackingVertex!)
-                    print(backtrackingVertex?.key)
                     backtrackingVertex = backtrackingVertex?.parent
                 }
-                path.append(backtrackingVertex!) // should add parent
+                path.append(backtrackingVertex!)
                 return path.reversed()
             }
             
-            // Get neighbors of currentVertext
+            // Get neighbors of currentVertex
             var neighborsOfCurrentVertext: [(Vertex, Int)] = [(Vertex, Int)]()
             for edge in currentVertex.edges {
                 let neighborToCurrentVertex = (edge.anchor, edge.length)
@@ -177,4 +173,61 @@ extension Collection {
         return !self.isEmpty
     }
     
+}
+
+
+/// I designed the graph to be fairly generic. Below are the more specific implemtation
+/// details of the graph featured in this project! 🌍
+protocol CoordinateComputation {
+    func addLocationVertex(name: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees) -> Vertex
+}
+
+protocol AStarSearchable {
+    func computeHeuristicForVerticesRelativeTo(goalVertex: Vertex)
+    func performAStarSearch(from start: Vertex, to goal: Vertex) -> [Vertex]?
+}
+
+extension Graph: CoordinateComputation {
+    func addLocationVertex(name: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees) -> Vertex {
+        let locationVertex: Vertex = Vertex(name: name, latitude: latitude, longitude: longitude)
+        canvas.append(locationVertex)
+        return locationVertex
+    }
+}
+
+extension Graph: AStarSearchable {
+    func computeHeuristicForVerticesRelativeTo(goalVertex: Vertex) {
+        self.canvas.forEach { vertex in
+            vertex.setHeuristicRelative(to: goalVertex)
+        }
+    }
+    
+    func performAStarSearch(from start: Vertex, to goal: Vertex) -> [Vertex]? {
+        self.computeHeuristicForVerticesRelativeTo(goalVertex: goal)
+        
+        var path: [Vertex]?
+        do {
+            path = try self.aStarSearch(from: start, to: goal)
+        } catch GraphError.emptyGraph {
+            print(GraphError.emptyGraph.errorDescription!)
+        } catch GraphError.startVertexNotInGraph {
+            print(GraphError.startVertexNotInGraph.errorDescription!)
+        } catch GraphError.goalVertexNotInGraph {
+            print(GraphError.goalVertexNotInGraph.errorDescription!)
+        } catch {
+            print(error)
+        }
+        
+        return path
+    }
+}
+
+extension Graph {
+    // For clearing graphs when user loads new one
+    public func removeEdges() {
+        guard self.canvas.isNotEmpty() else { return }
+        self.canvas.forEach { (vertex) in
+            vertex.edges.removeAll()
+        }
+    }
 }

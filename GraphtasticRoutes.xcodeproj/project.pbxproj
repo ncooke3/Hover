@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		4C0E01B3AE2A9A315A3646A0 /* Pods_GraphtasticRoutesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601FE0FC4A42A11E8FDE785A /* Pods_GraphtasticRoutesTests.framework */; };
 		7DD5446261DEBAF674776811 /* Pods_GraphtasticRoutes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB97BFA07EB679215203F84 /* Pods_GraphtasticRoutes.framework */; };
+		EA109E522320F09300C315E5 /* CircleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E512320F09300C315E5 /* CircleAnnotation.swift */; };
+		EA109E542320F0DF00C315E5 /* VertexPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E532320F0DF00C315E5 /* VertexPointAnnotation.swift */; };
+		EA109E562320F1CB00C315E5 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E552320F1CB00C315E5 /* BubbleView.swift */; };
+		EA109E582320F20E00C315E5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E572320F20E00C315E5 /* CardView.swift */; };
+		EA109E5A2320F22A00C315E5 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E592320F22A00C315E5 /* Dot.swift */; };
+		EA109E5C2320FBE700C315E5 /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E5B2320FBE700C315E5 /* AnimatedLabel.swift */; };
 		EA687435231A1E8F0099DAC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687434231A1E8F0099DAC4 /* AppDelegate.swift */; };
 		EA687437231A1E8F0099DAC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687436231A1E8F0099DAC4 /* ViewController.swift */; };
 		EA68743C231A1E900099DAC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA68743B231A1E900099DAC4 /* Assets.xcassets */; };
@@ -45,6 +51,12 @@
 		4F85684DAF27468AA70EEA8D /* Pods-GraphtasticRoutes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphtasticRoutes.debug.xcconfig"; path = "Target Support Files/Pods-GraphtasticRoutes/Pods-GraphtasticRoutes.debug.xcconfig"; sourceTree = "<group>"; };
 		601FE0FC4A42A11E8FDE785A /* Pods_GraphtasticRoutesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GraphtasticRoutesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		671AD0B65AC0F8DA8911D9C0 /* Pods-GraphtasticRoutesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphtasticRoutesTests.release.xcconfig"; path = "Target Support Files/Pods-GraphtasticRoutesTests/Pods-GraphtasticRoutesTests.release.xcconfig"; sourceTree = "<group>"; };
+		EA109E512320F09300C315E5 /* CircleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleAnnotation.swift; sourceTree = "<group>"; };
+		EA109E532320F0DF00C315E5 /* VertexPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexPointAnnotation.swift; sourceTree = "<group>"; };
+		EA109E552320F1CB00C315E5 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
+		EA109E572320F20E00C315E5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		EA109E592320F22A00C315E5 /* Dot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dot.swift; sourceTree = "<group>"; };
+		EA109E5B2320FBE700C315E5 /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
 		EA687431231A1E8F0099DAC4 /* GraphtasticRoutes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphtasticRoutes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA687434231A1E8F0099DAC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA687436231A1E8F0099DAC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,7 +150,13 @@
 				EA687478231C73460099DAC4 /* LocationVertex.swift */,
 				EAC92899231D9269006FF88C /* GradientView.swift */,
 				EAC9289B231DB538006FF88C /* CustomButton.swift */,
+				EA109E532320F0DF00C315E5 /* VertexPointAnnotation.swift */,
+				EA109E572320F20E00C315E5 /* CardView.swift */,
 				EA687470231B64060099DAC4 /* HoverColors.swift */,
+				EA109E5B2320FBE700C315E5 /* AnimatedLabel.swift */,
+				EA109E592320F22A00C315E5 /* Dot.swift */,
+				EA109E512320F09300C315E5 /* CircleAnnotation.swift */,
+				EA109E552320F1CB00C315E5 /* BubbleView.swift */,
 				EA687456231A20FC0099DAC4 /* Graph.swift */,
 				EA687474231C439B0099DAC4 /* Graphs.swift */,
 				EAC92891231CDCF1006FF88C /* Rationale-Regular.ttf */,
@@ -339,10 +357,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA109E562320F1CB00C315E5 /* BubbleView.swift in Sources */,
 				EA687457231A20FC0099DAC4 /* Graph.swift in Sources */,
 				EA687475231C439B0099DAC4 /* Graphs.swift in Sources */,
+				EA109E5C2320FBE700C315E5 /* AnimatedLabel.swift in Sources */,
+				EA109E5A2320F22A00C315E5 /* Dot.swift in Sources */,
 				EA687437231A1E8F0099DAC4 /* ViewController.swift in Sources */,
 				EA687473231C21C20099DAC4 /* Edge.swift in Sources */,
+				EA109E522320F09300C315E5 /* CircleAnnotation.swift in Sources */,
+				EA109E542320F0DF00C315E5 /* VertexPointAnnotation.swift in Sources */,
 				EA687435231A1E8F0099DAC4 /* AppDelegate.swift in Sources */,
 				EA687455231A1F560099DAC4 /* Vertex.swift in Sources */,
 				EA687479231C73460099DAC4 /* LocationVertex.swift in Sources */,
@@ -350,6 +373,7 @@
 				EAC9289C231DB538006FF88C /* CustomButton.swift in Sources */,
 				EAC9289A231D9269006FF88C /* GradientView.swift in Sources */,
 				EA687477231C479A0099DAC4 /* Locations.swift in Sources */,
+				EA109E582320F20E00C315E5 /* CardView.swift in Sources */,
 				EA687471231B64060099DAC4 /* HoverColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

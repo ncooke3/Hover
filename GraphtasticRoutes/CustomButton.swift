@@ -94,6 +94,7 @@ class CustomButton: UIView {
     var touchHasStayedInButton = false {
         didSet {
             buttonState = touchHasStayedInButton ? .highlighted : .unselected
+            print("🌵 touchHasStayedInButton", touchHasStayedInButton)
         }
     }
     
@@ -113,10 +114,7 @@ class CustomButton: UIView {
         label.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
         label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
         
-        tapRecognizer = UITapGestureRecognizer(target: self.frame, action: #selector(didTap))
-        tapRecognizer.numberOfTapsRequired = 1
-        tapRecognizer.numberOfTouchesRequired = 1
-        self.addGestureRecognizer(tapRecognizer)
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -133,6 +131,9 @@ class CustomButton: UIView {
         super.touchesBegan(touches, with: event)
         
         if let touch = touches.first {
+            print(self.frame)
+            print(touch.preciseLocation(in: self.superview))
+            print(self.frame.contains(touch.preciseLocation(in: self.superview)))
             touchHasStayedInButton = self.frame.contains(touch.preciseLocation(in: self.superview))
         }
     }
@@ -190,6 +191,11 @@ class CustomButton: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        tapRecognizer = UITapGestureRecognizer(target: self.frame, action: #selector(didTap))
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        self.addGestureRecognizer(tapRecognizer)
         
         setRoundedCorners()
     }
