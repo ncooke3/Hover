@@ -146,5 +146,14 @@ But after a few sleepless nights, a lot of whiteboarding, a bunch of Apple docs,
 ## Awesome Resources 🔥
 S/O to the internet for holding it down as always 🙏🏻💯
 
-These were some of the most useful resources! 
+These were some of the most useful resources!
 
+🔥[Graph Algorithms in Swift](https://medium.com/swift-algorithms-data-structures/building-graph-algorithms-with-swift-7f3cdb50ac8c)
+
+🔥[Geodesic Polylines for MapView](https://nshipster.com/mkgeodesicpolyline/)
+
+🔥[A* Pathfinding](https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2)
+
+🔥[MapKit: Annotations and Shape Rendering](https://www.appcoda.com/mapkit-beginner-guide/)
+
+🔥[MapKit Beginner’s Guide: Polylines, Polygons, and Callouts](https://www.appcoda.com/mapkit-polyline-polygon/)
