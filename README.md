@@ -42,7 +42,7 @@ At a high level, graphs are collections of nodes that have edges that connect to
 
 <div>
 <p>
-<img align="right" src="./vertex.png" width="150">
+<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/vertex.png" width="150">
 
 So we need to create a `Vertex` object, an `Edge` object, and our overarching `Graph` object. 
 
