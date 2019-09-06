@@ -38,11 +38,13 @@ Sooooo, what will our heuristic be? I decided that, considering we are searching
 
 ### 🤓The Graph Starter Kit 
 
+<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/vertex.png" width="300">
+
 At a high level, graphs are collections of nodes that have edges that connect to other nodes. The result is a web of vertices (nodes) that can represent some pretty cool things. A famous example of their use includes the way Google Maps works. Basically, think of all the intersections in the world being represented by nodes (heads up! I'm gonna start calling these vertices 👌🏼) with all the roads connecting those intersections representing the edges that connect vertices (which are the intersections!).
 
 <div>
 <p>
-<img align="right" src="./vertex.png" width="150">
+
 
 So we need to create a `Vertex` object, an `Edge` object, and our overarching `Graph` object. 
 
@@ -54,7 +56,7 @@ In the `Vertex` intializer, we create a set that will contain th vertex's edges.
 
 <p>
 
-<img align="right" src="./edge.png" width="185">
+<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/edge.png" width="300">
 
 Cool, so let's make our `Edge` so we can actually start connecting our vertices. Each `edge` has an anchor representing the vertex it is tied to. So if we add an `edge` **from** an `atlantaVertex` to a `newYorkVertex`, then this `edge`'s anchor would be the `atlantaVertex`. An `Edge` also has a `length` property which is what will later compute. In our case, this will be the distance from one point on Earth to another. But, remember how I said graphs could represent lots of types of relationships (besides just distance)? Welp, if we were building a social media app, we could set a property like this to some computed value representing the degree of connection between two people. 
 
@@ -65,9 +67,8 @@ Cool, so let's make our `Edge` so we can actually start connecting our vertices.
 ### Let's put it together! 🛠
 
 
-
+<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/graph_simple.png" width="500">
 So we got `vertices` and we got `edges`, let's get this information into our central `Graph` object. A `graph` will have a canvas which will be an array of all of our `vertices`. It 
-<img align="right" src="./graph_simple.png" width="200">
 will also have an `isDirected` property that is a `boolean`. I added this because I read a great graph implementation and liked the idea of building that functionality into my graph. A 
 directed graph is a graph where edges connecting vertices are a "one way street". When we connected our `atlantaVertex` to our `newyorkVertex`, we could either decide to make an edge connecting the `newYorkVertex` back to the `atlantaVertex` or just keep the edge only going from `ATL -> NYC`. If we made the extra edge from `NYC -> ATL` then we can move back and forth between them. If we didn't add that edge then we can only go from `ATL -> NYC'
 
@@ -95,7 +96,7 @@ Until now, I had never written tests for much of the code I wrote. I thought thi
 
 Here is an example of a test case I wrote for a medium sized graph: 
 <p>
-<img align="center" src="./test.png" width="200">
+<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/test.png" width="500">
 </p>
 The graph being tested was one that I had traced through several times and new the correct shortest path I wanted returned.
 
@@ -111,7 +112,7 @@ This part was probably my favorite part of the project. Since it was time to con
 
 To keep my `Vertex` class even cleaner, I wanted to conform to `Positionable` in an `extension`. I noticed this is a pretty common pattern in Swift development. But, as I was kindly reminded by XCode: `🚨Extensions must not contain stored properties.` So this is a bit of an aside but I found a really cool work around after researching some things for a while. The idea is to essentially declare the property you want stored and make it a computed property instead. This is then done in an extension through taking advantage of some memory addresses that will be created for the new property. Here is the code that got the job done: 
 
-<img align="center" src="./positionable.png" width="500">
+<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/positionable.png" width="500">
 
 Honestly, the work around adds a bit of code you could exclude if you just did like: 
 
@@ -124,7 +125,7 @@ But I just thought the work-around was creative enough to have some fun with and
 
 Our `Vertex` also needed to be able to calculate a heuristic (`Vertex`'s `h` property) so I conformed to `Vertex` to another `protocol Heuristable` in another extension of `Vertex`
 
-<img align="center" src="./pics/heuristable.png" width="500">
+<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/pics/heuristable.png">
 
 I placed these protocols and corresponding extensions in the `//  LocationVertexImplementation.swift` file so take a look 👀 if interested!
 
