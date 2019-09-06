@@ -38,11 +38,13 @@ Sooooo, what will our heuristic be? I decided that, considering we are searching
 
 ### 🤓The Graph Starter Kit 
 
+<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/vertex.png" width="300">
+
 At a high level, graphs are collections of nodes that have edges that connect to other nodes. The result is a web of vertices (nodes) that can represent some pretty cool things. A famous example of their use includes the way Google Maps works. Basically, think of all the intersections in the world being represented by nodes (heads up! I'm gonna start calling these vertices 👌🏼) with all the roads connecting those intersections representing the edges that connect vertices (which are the intersections!).
 
 <div>
 <p>
-<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/vertex.png" width="300">
+
 
 So we need to create a `Vertex` object, an `Edge` object, and our overarching `Graph` object. 
 
