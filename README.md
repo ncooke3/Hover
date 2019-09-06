@@ -125,7 +125,7 @@ But I just thought the work-around was creative enough to have some fun with and
 
 Our `Vertex` also needed to be able to calculate a heuristic (`Vertex`'s `h` property) so I conformed to `Vertex` to another `protocol Heuristable` in another extension of `Vertex`
 
-<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/pics/heuristable.png">
+<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/heuristable.png">
 
 I placed these protocols and corresponding extensions in the `//  LocationVertexImplementation.swift` file so take a look 👀 if interested!
 
