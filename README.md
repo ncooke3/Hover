@@ -124,7 +124,7 @@ But I just thought the work-around was creative enough to have some fun with and
 
 Our `Vertex` also needed to be able to calculate a heuristic (`Vertex`'s `h` property) so I conformed to `Vertex` to another `protocol Heuristable` in another extension of `Vertex`
 
-<img align="center" src="./heuristable.png" width="500">
+<img align="center" src="./pics/heuristable.png" width="500">
 
 I placed these protocols and corresponding extensions in the `//  LocationVertexImplementation.swift` file so take a look 👀 if interested!
 
@@ -132,7 +132,25 @@ I also made some protocols to fine tune the `Graph` class use with `Vertex`'s wi
 
 
 ## Using MapKit
-After I got everything squared with the graph stuff, it was time to make visualize it. 
+After I got everything squared with the graph stuff, it was time to visualize it. 
+
+Getting the map set up reminded be a good bit of implementing a UITableView. There were a few delegate methods you needed to conform to and you then were good to go. 
+
+I had to do a few things to render the vertices in the graph on the `mapView`. To render the blue dots for each vertex in the graph, I subclassed `MKAnnotationView` to create `CircleAnnotation`and then added `CAShapeLayer` to my custom class. I used `UIBezierPath` to create a perfect circle to represent each location on the map. 
+
+To render the edges, I added a `MKGeodesicPolyline` as an overlay on the `mapView` from each vertex to each of its neighbors.
+
+Since running the algorithm to get the the shortest path returned a list of vertices, I then iterated over that path adding blue `MKGeodesicPolylines`.
+
+I found an awesome [tutorial](https://nshipster.com/mkgeodesicpolyline/) for the animated drone that moves across the map when you find the shortest path. I think it was a great addition that makes the app feel more fun and playful. 
+
+## User Interface 
+As much as this project was an exercise in building an app with more internal comlexity, I still put a lot of effort into making the UI intuitive and attractive. I had multiple drafts of what I wanted it to look like and was really happy with the result. I escpecially loved the launch screen. Like in my last project, I used some more [awesome lottie animations](https://github.com/airbnb/lottie-ios)!
+
+## Challenges 🙃
+There were defintely a few hiccups along the way. Some of the most challenging included selecting annotations on the map and properly resetting them after the user taps them or the *Reset* button. There was lot of logic going into how to manage *what was allowed to be pressed and when should it be*. 
+
+I also had issues with my custom annotations rendering when they were scrolled out and back into view. In fact, there is one small bug 🐛 where if the user selects a annotation and scrolls it out and back into view, it sometime doesn't show it back in its selected state. Even weirder, sometimes it renders *another* annotation as selected. I had a work around I used to solve this but it wasn't 100% and was pretty messy. From the reading I did, it seems that `MKMapView` doesn't save the order of annotations laid onto it so when it re-adds them after they scroll back into the view, it can give the effect of them being scrambled. 
 
 ## The Wrap Up 🌯
 Reflecting, this project **really** tested me, both mentally and physically. When I set out to do it, I told myself I would give myself only a few days to finish it. I wanted to work quickly both to avoid dragging the project on into the future (since school is only getting busier 😫) and to simulate completing a complicated project on a short deadline. 
@@ -157,3 +175,7 @@ These were some of the most useful resources!
 🔥[MapKit: Annotations and Shape Rendering](https://www.appcoda.com/mapkit-beginner-guide/)
 
 🔥[MapKit Beginner’s Guide: Polylines, Polygons, and Callouts](https://www.appcoda.com/mapkit-polyline-polygon/)
+
+
+## Interested to know more or wanna say hi? Let's chat! ☕
+👀 Peep my resume and contact info [**here**](https://ncooke3.github.io/resume-/) 😃
