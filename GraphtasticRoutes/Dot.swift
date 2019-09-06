@@ -34,6 +34,7 @@ class Dot: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         if !frame.isEmpty { self.layer.addSublayer(circleLayer) }
+        // self .circle lyaer frame - cg rwxr
         
     }
     

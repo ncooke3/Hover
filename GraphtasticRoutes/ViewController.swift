@@ -21,11 +21,11 @@ class ViewController: UIViewController {
     var mapView = MKMapView()
     var locationGraph: Graph!
     
-    lazy var northAmericaButton = CustomButton()
-    lazy var globalButton = CustomButton()
-    lazy var georgiaTechButton = CustomButton()
+    var northAmericaButton = UIButton()
+    var globalButton = UIButton()
+    var georgiaTechButton = UIButton()
     
-    lazy var button: CustomButton = {
+    var button: CustomButton = {
         let button = CustomButton()
         button.isUserInteractionEnabled = false
         return button
@@ -97,6 +97,10 @@ class ViewController: UIViewController {
     var userInputToggle: Bool! {
         didSet {
             button.isUserInteractionEnabled = userInputToggle
+            UIView.animate(withDuration: 0.2) {
+                self.button.alpha = self.userInputToggle ? 1 : 0.6
+            }
+            
         }
     }
     
@@ -115,24 +119,14 @@ class ViewController: UIViewController {
     }
     
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    fileprivate func doEverything() {
+        userInputToggle = false
         setupMapView()
-        showAnimatedDroneMessage(text: "Welcome to Hover! Get started by tapping two points on the map!")
+        print(mapView.region)
         setupGraph(with: Graphs.World.graph)
         
-        globalButton.isUserInteractionEnabled = true
-        georgiaTechButton.isUserInteractionEnabled = true
-        northAmericaButton.isUserInteractionEnabled = true
-        
         panRecognizer.delegate = self
-        //globalButton.tapRecognizer.delegate = self
-        //button.tapRecognizer.delegate = self
-        //northAmericaButton.tapRecognizer.delegate = self
-        
 
-        
         setupMomentumView()
         setupThinHandleView()
         closedTransform = CGAffineTransform(translationX: 0, y: view.bounds.height * 0.6)
@@ -140,15 +134,48 @@ class ViewController: UIViewController {
         panRecognizer.addTarget(self, action: #selector(panned))
         momentumView.addGestureRecognizer(panRecognizer)
         
-
-
         
         setupStartViews()
         setupDestinationViews()
         setupGraphTypeLabel()
-        setupWorldButton()
-        setupGeorgiaTechButton()
-        setupNorthAmericaButton()
+        
+        globalButton.setTitle("         Global         ", for: .normal)
+        globalButton.titleLabel?.font = UIFont(name: "Rationale-Regular", size: 14)!
+        globalButton.backgroundColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
+        globalButton.layer.cornerRadius = 18
+        momentumView.addSubview(globalButton)
+        globalButton.translatesAutoresizingMaskIntoConstraints = false
+        globalButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -160).isActive = true
+        globalButton.centerXAnchor.constraint(equalTo: momentumView.centerXAnchor).isActive = true
+        globalButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        globalButton.addTarget(self, action: #selector(globalButtonTapped), for: .touchUpInside)
+        
+        
+        northAmericaButton.setTitle("   North America   ", for: .normal)
+        northAmericaButton.titleLabel?.font = UIFont(name: "Rationale-Regular", size: 14)!
+        northAmericaButton.backgroundColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
+        northAmericaButton.layer.cornerRadius = 18
+        momentumView.addSubview(northAmericaButton)
+        northAmericaButton.translatesAutoresizingMaskIntoConstraints = false
+        northAmericaButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -160).isActive = true
+        northAmericaButton.centerYAnchor.constraint(equalTo: globalButton.centerYAnchor).isActive = true
+        northAmericaButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        northAmericaButton.trailingAnchor.constraint(equalTo: globalButton.leadingAnchor, constant: -10).isActive = true
+        northAmericaButton.addTarget(self, action: #selector(northAmericaButtonTapped), for: .touchUpInside)
+        northAmericaButton.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor, constant: 30).isActive = true
+        
+        georgiaTechButton.setTitle("   Georgia Tech   ", for: .normal)
+        georgiaTechButton.titleLabel?.font = UIFont(name: "Rationale-Regular", size: 14)!
+        georgiaTechButton.backgroundColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
+        georgiaTechButton.layer.cornerRadius = 18
+        momentumView.addSubview(georgiaTechButton)
+        georgiaTechButton.translatesAutoresizingMaskIntoConstraints = false
+        georgiaTechButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -160).isActive = true
+        georgiaTechButton.leadingAnchor.constraint(equalTo: globalButton.trailingAnchor, constant: 10).isActive = true
+        georgiaTechButton.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor, constant: -30).isActive = true
+        georgiaTechButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        georgiaTechButton.addTarget(self, action: #selector(georgiaTechButtonTapped), for: .touchUpInside)
+        
         setupShortestPathButton()
         
         let distanceLabel = UILabel()
@@ -180,24 +207,6 @@ class ViewController: UIViewController {
         unitsLabel.topAnchor.constraint(equalTo: destinationLocationLabel.bottomAnchor, constant: 5).isActive = true
         unitsLabel.leadingAnchor.constraint(equalTo: shortestDistanceLabel.trailingAnchor, constant: 5).isActive = true
         
-        northAmericaButton.onTap = {
-            print("North America Tapped")
-            self.safelyClearsCurrentGraph()
-            self.locationGraph.removeEdges() // prevents crossover b/w graphs
-            self.locationGraph = Graphs.NorthAmerica.graph
-            self.setupGraph(with: self.locationGraph)
-            
-        }
-        
-        globalButton.onTap = {
-            print("Global pressed!")
-        }
-
-        georgiaTechButton.onTap = {
-            print("GT pressed!")
-        }
-        
-
         button.onTap = {
             if self.button.label.attributedText?.string == "Find Shortest Path" {
                 let startVertexAnnotationView = self.mapView.view(for: self.startVertexAnnotation!) as! CircleAnnotation
@@ -207,7 +216,7 @@ class ViewController: UIViewController {
                 let goalVertexAnnotationView = self.mapView.view(for: self.goalVertexAnnotation!) as! CircleAnnotation
                 goalVertexAnnotationView.state = .unselected
                 goalVertexAnnotationView.shrink(the: goalVertexAnnotationView)
-
+                
                 self.startVertex = nil
                 self.goalVertex = nil
                 
@@ -222,7 +231,7 @@ class ViewController: UIViewController {
                 self.shortestDistanceLabel.text = "0"
                 
             } else {
- 
+                
                 guard let path = self.locationGraph.performAStarSearch(from: self.startVertex!, to: self.goalVertex!) else { return }
                 self.masterPath = path
                 let locations = self.masterPath.map( { $0.coordinates } )
@@ -237,21 +246,79 @@ class ViewController: UIViewController {
                 
                 if locations.count > 1 {
                     var shortestDist: Int = 0
-                
+                    
                     for index in 0..<locations.count - 1 {
                         shortestDist += locations[index].distance(from: locations[index + 1])
                     }
                     
                     self.shortestDistanceLabel.countFromZero(to: Float(shortestDist) * 0.000621371 )
                 }
-            
+                
                 self.updatePlanePosition()
                 self.canUserEditAnnotations = false
-
+                
             }
-
+            
+        }
+    }
+    
+    @objc func northAmericaButtonTapped() {
+        self.safelyClearsCurrentGraph()
+        self.locationGraph.removeEdges() // prevents crossover b/w graphs
+        self.locationGraph = Graphs.NorthAmerica.graph
+        self.setupGraph(with: self.locationGraph)
+        mapView.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.13, longitude: -95.7855), span: MKCoordinateSpan(latitudeDelta: 97.66728, longitudeDelta: 61.27601)), animated: true)
+    }
+    
+    @objc func globalButtonTapped() {
+        self.safelyClearsCurrentGraph()
+        self.locationGraph.removeEdges() // prevents crossover b/w graphs
+        self.locationGraph = Graphs.World.graph
+        self.setupGraph(with: self.locationGraph)
+        mapView.setRegion(MKCoordinateRegion(MKMapRect.world), animated: true)
+    }
+    
+    @objc func georgiaTechButtonTapped() {
+        self.safelyClearsCurrentGraph()
+        self.locationGraph.removeEdges() // prevents crossover b/w graphs
+        self.locationGraph = Graphs.GeorgiaTech.graph
+        self.setupGraph(with: self.locationGraph)
+        let region = MKCoordinateRegion(center: Clough.coordinates, latitudinalMeters: CLLocationDistance(exactly: 3500)!, longitudinalMeters: CLLocationDistance(exactly: 3500)!)
+        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+ 
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        doEverything()
+        
+        view.addSubview(splashView)
+        splashView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        splashView.alpha = 0
+        
+        UIView.animate(withDuration: 0.2) {
+            self.splashView.alpha = 1
+            self.splashView.transform = CGAffineTransform.identity
         }
         
+        let welcomeViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(animateOutSplashview))
+        welcomeViewTapRecognizer.numberOfTapsRequired = 1
+        welcomeViewTapRecognizer.numberOfTouchesRequired = 1
+        splashView.addGestureRecognizer(welcomeViewTapRecognizer)
+        
+    }
+    
+    @objc func animateOutSplashview() {
+        
+        UIView.animate(withDuration: 0.3, delay: 0, animations: {
+            self.splashView.alpha = 0
+            self.mapView.alpha = 1
+        }) { (success: Bool) in
+            self.splashView.removeFromSuperview()
+            self.showAnimatedDroneMessage(text: "Welcome to Hover! Get started by tapping two points on the map!")
+        }
+
     }
     
     @objc func updatePlanePosition() {
@@ -268,6 +335,7 @@ class ViewController: UIViewController {
         mapView.frame = view.frame
         mapView.delegate = self
         view.addSubview(mapView)
+        mapView.alpha = 0
     }
     
     private func setupGraph(with graph: Graph) {
@@ -302,46 +370,52 @@ class ViewController: UIViewController {
         button.heightAnchor.constraint(equalToConstant: 65).isActive = true
     }
     
-    private func setupNorthAmericaButton() {
-        northAmericaButton.primaryTitle =  "N. America"
-        northAmericaButton.secondaryTitle =  "N. America"
-        northAmericaButton.titleFont = UIFont(name: "Rationale-Regular", size: 14)!
-        northAmericaButton.highlightedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
-        northAmericaButton.unselectedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
-        momentumView.addSubview(northAmericaButton)
-        northAmericaButton.translatesAutoresizingMaskIntoConstraints = false
-        northAmericaButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -160).isActive = true
-        northAmericaButton.trailingAnchor.constraint(equalTo: globalButton.leadingAnchor, constant: -10).isActive = true
-        northAmericaButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        northAmericaButton.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor, constant: 12).isActive = true
-        
-    }
+//    private func setupNorthAmericaButton() {
+//        northAmericaButton.primaryTitle =  "N. America"
+//        northAmericaButton.secondaryTitle =  "N. America"
+//        northAmericaButton.titleFont = UIFont(name: "Rationale-Regular", size: 14)!
+//        northAmericaButton.highlightedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
+//        northAmericaButton.unselectedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
+//        momentumView.addSubview(northAmericaButton)
+//        northAmericaButton.translatesAutoresizingMaskIntoConstraints = false
+//        northAmericaButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -160).isActive = true
+//        northAmericaButton.trailingAnchor.constraint(equalTo: globalButton.leadingAnchor, constant: -10).isActive = true
+//        northAmericaButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+//        northAmericaButton.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor, constant: 12).isActive = true
+//
+//    }
     
-    private func setupGeorgiaTechButton() {
-        georgiaTechButton.primaryTitle = "Georgia Tech"
-        georgiaTechButton.secondaryTitle = "Tech"
-        georgiaTechButton.titleFont = UIFont(name: "Rationale-Regular", size: 14)!
-        georgiaTechButton.highlightedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
-        georgiaTechButton.unselectedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
-        momentumView.addSubview(georgiaTechButton)
-        georgiaTechButton.translatesAutoresizingMaskIntoConstraints = false
-        georgiaTechButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -160).isActive = true
-        georgiaTechButton.leadingAnchor.constraint(equalTo: globalButton.trailingAnchor, constant: 10).isActive = true
-        georgiaTechButton.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor, constant: -12).isActive = true
-        georgiaTechButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-    }
+//    private func setupGeorgiaTechButton() {
+//        georgiaTechButton.primaryTitle = "Georgia Tech"
+//        georgiaTechButton.secondaryTitle = "Tech"
+//        georgiaTechButton.titleFont = UIFont(name: "Rationale-Regular", size: 14)!
+//        georgiaTechButton.highlightedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
+//        georgiaTechButton.unselectedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
+//        momentumView.addSubview(georgiaTechButton)
+//        georgiaTechButton.translatesAutoresizingMaskIntoConstraints = false
+//        georgiaTechButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -160).isActive = true
+//        georgiaTechButton.leadingAnchor.constraint(equalTo: globalButton.trailingAnchor, constant: 10).isActive = true
+//        georgiaTechButton.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor, constant: -12).isActive = true
+//        georgiaTechButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+//    }
     
     private func setupWorldButton() {
-        globalButton.primaryTitle = "Global"
-        globalButton.secondaryTitle = "Global"
-        globalButton.titleFont = UIFont(name: "Rationale-Regular", size: 14)!
-        globalButton.highlightedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
-        globalButton.unselectedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
+//        globalButton.primaryTitle = "Global"
+//        globalButton.secondaryTitle = "Global"
+//        globalButton.titleFont = UIFont(name: "Rationale-Regular", size: 14)!
+//        globalButton.highlightedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
+//        globalButton.unselectedColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
+//        globalButton.tapRecognizer.delegate = self
+        globalButton.setTitle("Global", for: .normal)
+        globalButton.titleLabel?.font = UIFont(name: "Rationale-Regular", size: 14)!
+        globalButton.backgroundColor = Colors.custom(hexString: "#3f87dd", alpha: 0.9).value
+        globalButton.layer.cornerRadius = 15
         momentumView.addSubview(globalButton)
         globalButton.translatesAutoresizingMaskIntoConstraints = false
         globalButton.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor, constant: -160).isActive = true
         globalButton.centerXAnchor.constraint(equalTo: momentumView.centerXAnchor).isActive = true
         globalButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        globalButton.addTarget(self, action: #selector(globalButtonTapped), for: .touchUpInside)
     }
     
     private func setupStartViews() {
@@ -462,7 +536,6 @@ extension ViewController: MKMapViewDelegate {
     
     private func circleAnnotationView(in mapView: MKMapView, for annotation: MKAnnotation) -> CircleAnnotation {
         let identifier = "circleAnnotationViewID"
-        print(annotation is VertexPointAnnotation)
         if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CircleAnnotation {
             annotationView.annotation = annotation
             return annotationView
@@ -500,11 +573,7 @@ extension ViewController: UIGestureRecognizerDelegate {
         let globalButtonContainsTouch = globalButton.frame.contains(touch.location(in: momentumView))
         let georgiaTechButtonContainsTouch = georgiaTechButton.frame.contains(touch.location(in: momentumView))
         
-        if globalButtonContainsTouch {
-            return true
-        }
-        
-        if buttonContainsTouch || americaButtonContainsTouch || georgiaTechButtonContainsTouch {
+        if buttonContainsTouch || americaButtonContainsTouch || globalButtonContainsTouch || georgiaTechButtonContainsTouch {
             if gestureRecognizer == panRecognizer {
                 return false
             }
@@ -514,6 +583,7 @@ extension ViewController: UIGestureRecognizerDelegate {
     }
     
 }
+
 
 extension ViewController {
     
@@ -648,10 +718,10 @@ extension ViewController {
                                                   height: bubbleSize.height))
         
         bubbleView.backgroundColor = .clear
-        view.addSubview(bubbleView)
+        view.insertSubview(bubbleView, belowSubview: self.momentumView)
         
         label.center = bubbleView.center
-        view.addSubview(label)
+        view.insertSubview(label, belowSubview: self.momentumView)
         
         UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseInOut], animations: {
             bubbleView.frame.origin.x += bubbleSize.width + 100
@@ -665,7 +735,7 @@ extension ViewController {
         
         
         let containerView = UIView(frame: CGRect(x: -100 - bubbleSize.width, y: 180, width: 100, height: 100))
-        view.addSubview(containerView)
+        view.insertSubview(containerView, belowSubview: self.momentumView)
         
         let rotatingImageView = UIImageView(frame: containerView.bounds)
         rotatingImageView.image = UIImage(named: "drone")?.withRenderingMode(.alwaysOriginal)

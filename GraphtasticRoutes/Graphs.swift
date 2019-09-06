@@ -99,20 +99,20 @@ struct GeorgiaTechGraph {
     }
     
     static let adjacencyList: [Vertex : [Vertex]] = [
-        TechTower    : [],
-        Clough       : [],
-        Paper        : [],
+        TechTower    : [Clough],
+        Clough       : [CRC, Ferst],
+        Paper        : [WestVillage],
         Ferst        : [],
-        Nave         : [],
-        WestVillage  : [],
-        CRC          : [],
-        Klaus        : [],
-        TechSquare   : [],
-        HomePark     : [],
-        BobbyDodd    : [],
-        Howey        : [],
-        Cookout      : [],
-        TheVarsity   : [],
+        Nave         : [TechSquare, TechTower],
+        WestVillage  : [CRC],
+        CRC          : [Ferst, Klaus],
+        Klaus        : [Clough],
+        TechSquare   : [Clough, Klaus],
+        HomePark     : [Paper, Klaus],
+        BobbyDodd    : [Nave, TechSquare],
+        Howey        : [Clough, Klaus],
+        Cookout      : [Paper, HomePark],
+        TheVarsity   : [TechSquare, Nave],
     ]
     
 }

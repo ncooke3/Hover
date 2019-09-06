@@ -32,7 +32,7 @@ class SplashView: UIView {
     
     lazy var tapLabel: UILabel = {
         let label = UILabel()
-        let labelFont = UIFont(name: "Rationale-Regular", size: 14)!
+        let labelFont = UIFont(name: "Rationale-Regular", size: 12)!
         let labelColor = UIColor.white
         let labelLetterSpacing = 1.25
         let labelAttributes: [NSAttributedString.Key: Any] = [
@@ -40,7 +40,7 @@ class SplashView: UIView {
             .foregroundColor: labelColor,
             .kern: labelLetterSpacing
         ]
-        let attributedLabelTitle = NSMutableAttributedString(string: "tap to get started", attributes: labelAttributes)
+        let attributedLabelTitle = NSMutableAttributedString(string: "tap here to get started", attributes: labelAttributes)
         label.attributedText = attributedLabelTitle
         label.sizeToFit()
         return label

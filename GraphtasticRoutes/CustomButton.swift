@@ -114,6 +114,11 @@ class CustomButton: UIView {
         label.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
         label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
         
+        tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(gestureRecognizer:)))
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        tapRecognizer.cancelsTouchesInView = false
+        self.addGestureRecognizer(tapRecognizer)
 
     }
     
@@ -121,7 +126,7 @@ class CustomButton: UIView {
         super.init(coder: aDecoder)
     }
     
-    @objc private func didTap() {
+    @objc private func didTap(gestureRecognizer: UITapGestureRecognizer) {
         toggleLabelAttributedText()
         onTap()
     }
@@ -135,6 +140,7 @@ class CustomButton: UIView {
             print(touch.preciseLocation(in: self.superview))
             print(self.frame.contains(touch.preciseLocation(in: self.superview)))
             touchHasStayedInButton = self.frame.contains(touch.preciseLocation(in: self.superview))
+            print("😫", touchHasStayedInButton)
         }
     }
     
@@ -161,7 +167,7 @@ class CustomButton: UIView {
             } else {
                 // reset button's state since it will be tapped
                 buttonState = .unselected
-                didTap()
+                //didTap()
             }
         }
     }
@@ -177,7 +183,7 @@ class CustomButton: UIView {
             } else {
                 // reset button's state since it will be tapped
                 buttonState = .unselected
-                didTap()
+                //didTap()
             }
         }
     }
@@ -191,11 +197,6 @@ class CustomButton: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        tapRecognizer = UITapGestureRecognizer(target: self.frame, action: #selector(didTap))
-        tapRecognizer.numberOfTapsRequired = 1
-        tapRecognizer.numberOfTouchesRequired = 1
-        self.addGestureRecognizer(tapRecognizer)
         
         setRoundedCorners()
     }
