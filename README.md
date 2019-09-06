@@ -96,7 +96,7 @@ Until now, I had never written tests for much of the code I wrote. I thought thi
 
 Here is an example of a test case I wrote for a medium sized graph: 
 <p>
-<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/test.png" width="500">
+<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/test.png">
 </p>
 The graph being tested was one that I had traced through several times and new the correct shortest path I wanted returned.
 
