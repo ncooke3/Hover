@@ -54,7 +54,7 @@ In the `Vertex` intializer, we create a set that will contain th vertex's edges.
 
 <p>
 
-<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/edge.png" width="300">
+<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/edge.png" width="200">
 
 Cool, so let's make our `Edge` so we can actually start connecting our vertices. Each `edge` has an anchor representing the vertex it is tied to. So if we add an `edge` **from** an `atlantaVertex` to a `newYorkVertex`, then this `edge`'s anchor would be the `atlantaVertex`. An `Edge` also has a `length` property which is what will later compute. In our case, this will be the distance from one point on Earth to another. But, remember how I said graphs could represent lots of types of relationships (besides just distance)? Welp, if we were building a social media app, we could set a property like this to some computed value representing the degree of connection between two people. 
 
