@@ -42,7 +42,7 @@ At a high level, graphs are collections of nodes that have edges that connect to
 
 <div>
 <p>
-<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/vertex.png" width="150">
+<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/vertex.png" width="500">
 
 So we need to create a `Vertex` object, an `Edge` object, and our overarching `Graph` object. 
 
@@ -54,7 +54,7 @@ In the `Vertex` intializer, we create a set that will contain th vertex's edges.
 
 <p>
 
-<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/edge.png" width="185">
+<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/edge.png" width="300">
 
 Cool, so let's make our `Edge` so we can actually start connecting our vertices. Each `edge` has an anchor representing the vertex it is tied to. So if we add an `edge` **from** an `atlantaVertex` to a `newYorkVertex`, then this `edge`'s anchor would be the `atlantaVertex`. An `Edge` also has a `length` property which is what will later compute. In our case, this will be the distance from one point on Earth to another. But, remember how I said graphs could represent lots of types of relationships (besides just distance)? Welp, if we were building a social media app, we could set a property like this to some computed value representing the degree of connection between two people. 
 
@@ -67,7 +67,7 @@ Cool, so let's make our `Edge` so we can actually start connecting our vertices.
 
 
 So we got `vertices` and we got `edges`, let's get this information into our central `Graph` object. A `graph` will have a canvas which will be an array of all of our `vertices`. It 
-<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/graph_simple.png" width="200">
+<img align="right" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/graph_simple.png" width="500">
 will also have an `isDirected` property that is a `boolean`. I added this because I read a great graph implementation and liked the idea of building that functionality into my graph. A 
 directed graph is a graph where edges connecting vertices are a "one way street". When we connected our `atlantaVertex` to our `newyorkVertex`, we could either decide to make an edge connecting the `newYorkVertex` back to the `atlantaVertex` or just keep the edge only going from `ATL -> NYC`. If we made the extra edge from `NYC -> ATL` then we can move back and forth between them. If we didn't add that edge then we can only go from `ATL -> NYC'
 
@@ -95,7 +95,7 @@ Until now, I had never written tests for much of the code I wrote. I thought thi
 
 Here is an example of a test case I wrote for a medium sized graph: 
 <p>
-<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/test.png" width="200">
+<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/test.png" width="500">
 </p>
 The graph being tested was one that I had traced through several times and new the correct shortest path I wanted returned.
 
@@ -124,7 +124,7 @@ But I just thought the work-around was creative enough to have some fun with and
 
 Our `Vertex` also needed to be able to calculate a heuristic (`Vertex`'s `h` property) so I conformed to `Vertex` to another `protocol Heuristable` in another extension of `Vertex`
 
-<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/pics/heuristable.png" width="500">
+<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/pics/heuristable.png">
 
 I placed these protocols and corresponding extensions in the `//  LocationVertexImplementation.swift` file so take a look 👀 if interested!
 
