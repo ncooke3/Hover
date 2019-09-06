@@ -14,6 +14,11 @@
 		EA109E562320F1CB00C315E5 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E552320F1CB00C315E5 /* BubbleView.swift */; };
 		EA109E5A2320F22A00C315E5 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E592320F22A00C315E5 /* Dot.swift */; };
 		EA109E5C2320FBE700C315E5 /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E5B2320FBE700C315E5 /* AnimatedLabel.swift */; };
+		EA109E692323265400C315E5 /* edge.png in Resources */ = {isa = PBXBuildFile; fileRef = EA109E642323265300C315E5 /* edge.png */; };
+		EA109E6A2323265400C315E5 /* vertex.png in Resources */ = {isa = PBXBuildFile; fileRef = EA109E652323265300C315E5 /* vertex.png */; };
+		EA109E6B2323265400C315E5 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = EA109E662323265300C315E5 /* test.png */; };
+		EA109E6C2323265400C315E5 /* heuristable.png in Resources */ = {isa = PBXBuildFile; fileRef = EA109E672323265300C315E5 /* heuristable.png */; };
+		EA109E6D2323265400C315E5 /* graph_simple.png in Resources */ = {isa = PBXBuildFile; fileRef = EA109E682323265300C315E5 /* graph_simple.png */; };
 		EA687435231A1E8F0099DAC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687434231A1E8F0099DAC4 /* AppDelegate.swift */; };
 		EA687437231A1E8F0099DAC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687436231A1E8F0099DAC4 /* ViewController.swift */; };
 		EA68743C231A1E900099DAC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA68743B231A1E900099DAC4 /* Assets.xcassets */; };
@@ -55,6 +60,11 @@
 		EA109E552320F1CB00C315E5 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		EA109E592320F22A00C315E5 /* Dot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dot.swift; sourceTree = "<group>"; };
 		EA109E5B2320FBE700C315E5 /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
+		EA109E642323265300C315E5 /* edge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edge.png; sourceTree = "<group>"; };
+		EA109E652323265300C315E5 /* vertex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vertex.png; sourceTree = "<group>"; };
+		EA109E662323265300C315E5 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		EA109E672323265300C315E5 /* heuristable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heuristable.png; sourceTree = "<group>"; };
+		EA109E682323265300C315E5 /* graph_simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph_simple.png; sourceTree = "<group>"; };
 		EA687431231A1E8F0099DAC4 /* GraphtasticRoutes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphtasticRoutes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA687434231A1E8F0099DAC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA687436231A1E8F0099DAC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -180,9 +190,22 @@
 			path = Graph;
 			sourceTree = "<group>";
 		};
+		EA109E632323265300C315E5 /* Code Pics */ = {
+			isa = PBXGroup;
+			children = (
+				EA109E642323265300C315E5 /* edge.png */,
+				EA109E652323265300C315E5 /* vertex.png */,
+				EA109E662323265300C315E5 /* test.png */,
+				EA109E672323265300C315E5 /* heuristable.png */,
+				EA109E682323265300C315E5 /* graph_simple.png */,
+			);
+			path = "Code Pics";
+			sourceTree = "<group>";
+		};
 		EA687428231A1E8E0099DAC4 = {
 			isa = PBXGroup;
 			children = (
+				EA109E632323265300C315E5 /* Code Pics */,
 				EA687433231A1E8F0099DAC4 /* GraphtasticRoutes */,
 				EA687448231A1E910099DAC4 /* GraphtasticRoutesTests */,
 				EA687432231A1E8F0099DAC4 /* Products */,
@@ -313,9 +336,14 @@
 			files = (
 				EA68743C231A1E900099DAC4 /* Assets.xcassets in Resources */,
 				EAC92890231CCA84006FF88C /* earth_lottie.json in Resources */,
+				EA109E692323265400C315E5 /* edge.png in Resources */,
+				EA109E6B2323265400C315E5 /* test.png in Resources */,
+				EA109E6D2323265400C315E5 /* graph_simple.png in Resources */,
 				EAC9288A231CA5EC006FF88C /* drone_lottie.json in Resources */,
 				EAC9289E231E0F2D006FF88C /* LaunchScreen.storyboard in Resources */,
 				EAC92892231CDE32006FF88C /* Rationale-Regular.ttf in Resources */,
+				EA109E6C2323265400C315E5 /* heuristable.png in Resources */,
+				EA109E6A2323265400C315E5 /* vertex.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
