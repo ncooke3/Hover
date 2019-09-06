@@ -19,6 +19,7 @@
 		EA109E6B2323265400C315E5 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = EA109E662323265300C315E5 /* test.png */; };
 		EA109E6C2323265400C315E5 /* heuristable.png in Resources */ = {isa = PBXBuildFile; fileRef = EA109E672323265300C315E5 /* heuristable.png */; };
 		EA109E6D2323265400C315E5 /* graph_simple.png in Resources */ = {isa = PBXBuildFile; fileRef = EA109E682323265300C315E5 /* graph_simple.png */; };
+		EA109E6F2323289300C315E5 /* positionable.png in Resources */ = {isa = PBXBuildFile; fileRef = EA109E6E2323289300C315E5 /* positionable.png */; };
 		EA687435231A1E8F0099DAC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687434231A1E8F0099DAC4 /* AppDelegate.swift */; };
 		EA687437231A1E8F0099DAC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687436231A1E8F0099DAC4 /* ViewController.swift */; };
 		EA68743C231A1E900099DAC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA68743B231A1E900099DAC4 /* Assets.xcassets */; };
@@ -65,6 +66,7 @@
 		EA109E662323265300C315E5 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		EA109E672323265300C315E5 /* heuristable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heuristable.png; sourceTree = "<group>"; };
 		EA109E682323265300C315E5 /* graph_simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph_simple.png; sourceTree = "<group>"; };
+		EA109E6E2323289300C315E5 /* positionable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = positionable.png; sourceTree = "<group>"; };
 		EA687431231A1E8F0099DAC4 /* GraphtasticRoutes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphtasticRoutes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA687434231A1E8F0099DAC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA687436231A1E8F0099DAC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		EA109E632323265300C315E5 /* Code Pics */ = {
 			isa = PBXGroup;
 			children = (
+				EA109E6E2323289300C315E5 /* positionable.png */,
 				EA109E642323265300C315E5 /* edge.png */,
 				EA109E652323265300C315E5 /* vertex.png */,
 				EA109E662323265300C315E5 /* test.png */,
@@ -334,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA109E6F2323289300C315E5 /* positionable.png in Resources */,
 				EA68743C231A1E900099DAC4 /* Assets.xcassets in Resources */,
 				EAC92890231CCA84006FF88C /* earth_lottie.json in Resources */,
 				EA109E692323265400C315E5 /* edge.png in Resources */,
