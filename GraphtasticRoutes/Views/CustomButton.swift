@@ -94,7 +94,6 @@ class CustomButton: UIView {
     var touchHasStayedInButton = false {
         didSet {
             buttonState = touchHasStayedInButton ? .highlighted : .unselected
-            print("🌵 touchHasStayedInButton", touchHasStayedInButton)
         }
     }
     
@@ -136,11 +135,7 @@ class CustomButton: UIView {
         super.touchesBegan(touches, with: event)
         
         if let touch = touches.first {
-            print(self.frame)
-            print(touch.preciseLocation(in: self.superview))
-            print(self.frame.contains(touch.preciseLocation(in: self.superview)))
             touchHasStayedInButton = self.frame.contains(touch.preciseLocation(in: self.superview))
-            print("😫", touchHasStayedInButton)
         }
     }
     

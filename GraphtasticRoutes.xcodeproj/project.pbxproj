@@ -12,7 +12,6 @@
 		EA109E522320F09300C315E5 /* CircleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E512320F09300C315E5 /* CircleAnnotation.swift */; };
 		EA109E542320F0DF00C315E5 /* VertexPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E532320F0DF00C315E5 /* VertexPointAnnotation.swift */; };
 		EA109E562320F1CB00C315E5 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E552320F1CB00C315E5 /* BubbleView.swift */; };
-		EA109E582320F20E00C315E5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E572320F20E00C315E5 /* CardView.swift */; };
 		EA109E5A2320F22A00C315E5 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E592320F22A00C315E5 /* Dot.swift */; };
 		EA109E5C2320FBE700C315E5 /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA109E5B2320FBE700C315E5 /* AnimatedLabel.swift */; };
 		EA687435231A1E8F0099DAC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687434231A1E8F0099DAC4 /* AppDelegate.swift */; };
@@ -25,7 +24,7 @@
 		EA687473231C21C20099DAC4 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687472231C21C20099DAC4 /* Edge.swift */; };
 		EA687475231C439B0099DAC4 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687474231C439B0099DAC4 /* Graphs.swift */; };
 		EA687477231C479A0099DAC4 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687476231C479A0099DAC4 /* Locations.swift */; };
-		EA687479231C73460099DAC4 /* LocationVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687478231C73460099DAC4 /* LocationVertex.swift */; };
+		EA687479231C73460099DAC4 /* LocationVertexImplentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA687478231C73460099DAC4 /* LocationVertexImplentation.swift */; };
 		EAC9288A231CA5EC006FF88C /* drone_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = EAC92889231CA5EC006FF88C /* drone_lottie.json */; };
 		EAC92890231CCA84006FF88C /* earth_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = EAC9288F231CCA84006FF88C /* earth_lottie.json */; };
 		EAC92892231CDE32006FF88C /* Rationale-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAC92891231CDCF1006FF88C /* Rationale-Regular.ttf */; };
@@ -54,7 +53,6 @@
 		EA109E512320F09300C315E5 /* CircleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleAnnotation.swift; sourceTree = "<group>"; };
 		EA109E532320F0DF00C315E5 /* VertexPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexPointAnnotation.swift; sourceTree = "<group>"; };
 		EA109E552320F1CB00C315E5 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
-		EA109E572320F20E00C315E5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		EA109E592320F22A00C315E5 /* Dot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dot.swift; sourceTree = "<group>"; };
 		EA109E5B2320FBE700C315E5 /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
 		EA687431231A1E8F0099DAC4 /* GraphtasticRoutes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphtasticRoutes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,7 +69,7 @@
 		EA687472231C21C20099DAC4 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		EA687474231C439B0099DAC4 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		EA687476231C479A0099DAC4 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
-		EA687478231C73460099DAC4 /* LocationVertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVertex.swift; sourceTree = "<group>"; };
+		EA687478231C73460099DAC4 /* LocationVertexImplentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVertexImplentation.swift; sourceTree = "<group>"; };
 		EAC92889231CA5EC006FF88C /* drone_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = drone_lottie.json; sourceTree = "<group>"; };
 		EAC9288F231CCA84006FF88C /* earth_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = earth_lottie.json; sourceTree = "<group>"; };
 		EAC92891231CDCF1006FF88C /* Rationale-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rationale-Regular.ttf"; sourceTree = "<group>"; };
@@ -122,6 +120,66 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EA109E5D2322EEB800C315E5 /* Graph Data */ = {
+			isa = PBXGroup;
+			children = (
+				EA687476231C479A0099DAC4 /* Locations.swift */,
+				EA687474231C439B0099DAC4 /* Graphs.swift */,
+			);
+			path = "Graph Data";
+			sourceTree = "<group>";
+		};
+		EA109E5E2322EF0B00C315E5 /* Lotties */ = {
+			isa = PBXGroup;
+			children = (
+				EAC9288F231CCA84006FF88C /* earth_lottie.json */,
+				EAC92889231CA5EC006FF88C /* drone_lottie.json */,
+			);
+			path = Lotties;
+			sourceTree = "<group>";
+		};
+		EA109E5F2322EF2100C315E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EA109E532320F0DF00C315E5 /* VertexPointAnnotation.swift */,
+				EA109E512320F09300C315E5 /* CircleAnnotation.swift */,
+				EAC9289B231DB538006FF88C /* CustomButton.swift */,
+				EA109E5B2320FBE700C315E5 /* AnimatedLabel.swift */,
+				EAC92899231D9269006FF88C /* GradientView.swift */,
+				EA109E552320F1CB00C315E5 /* BubbleView.swift */,
+				EAC92893231CE417006FF88C /* SplashView.swift */,
+				EA109E592320F22A00C315E5 /* Dot.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EA109E602322EF7C00C315E5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EAC92891231CDCF1006FF88C /* Rationale-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		EA109E612322EFB900C315E5 /* Hover Colors */ = {
+			isa = PBXGroup;
+			children = (
+				EA687470231B64060099DAC4 /* HoverColors.swift */,
+			);
+			path = "Hover Colors";
+			sourceTree = "<group>";
+		};
+		EA109E622322EFDC00C315E5 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				EA687456231A20FC0099DAC4 /* Graph.swift */,
+				EA687454231A1F560099DAC4 /* Vertex.swift */,
+				EA687472231C21C20099DAC4 /* Edge.swift */,
+				EA687478231C73460099DAC4 /* LocationVertexImplentation.swift */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
 		EA687428231A1E8E0099DAC4 = {
 			isa = PBXGroup;
 			children = (
@@ -147,25 +205,12 @@
 			children = (
 				EA687434231A1E8F0099DAC4 /* AppDelegate.swift */,
 				EA687436231A1E8F0099DAC4 /* ViewController.swift */,
-				EA687478231C73460099DAC4 /* LocationVertex.swift */,
-				EAC92899231D9269006FF88C /* GradientView.swift */,
-				EAC9289B231DB538006FF88C /* CustomButton.swift */,
-				EA109E532320F0DF00C315E5 /* VertexPointAnnotation.swift */,
-				EA109E572320F20E00C315E5 /* CardView.swift */,
-				EA687470231B64060099DAC4 /* HoverColors.swift */,
-				EA109E5B2320FBE700C315E5 /* AnimatedLabel.swift */,
-				EA109E592320F22A00C315E5 /* Dot.swift */,
-				EA109E512320F09300C315E5 /* CircleAnnotation.swift */,
-				EA109E552320F1CB00C315E5 /* BubbleView.swift */,
-				EA687456231A20FC0099DAC4 /* Graph.swift */,
-				EA687474231C439B0099DAC4 /* Graphs.swift */,
-				EAC92891231CDCF1006FF88C /* Rationale-Regular.ttf */,
-				EAC92893231CE417006FF88C /* SplashView.swift */,
-				EA687476231C479A0099DAC4 /* Locations.swift */,
-				EA687454231A1F560099DAC4 /* Vertex.swift */,
-				EAC92889231CA5EC006FF88C /* drone_lottie.json */,
-				EAC9288F231CCA84006FF88C /* earth_lottie.json */,
-				EA687472231C21C20099DAC4 /* Edge.swift */,
+				EA109E622322EFDC00C315E5 /* Graph */,
+				EA109E5D2322EEB800C315E5 /* Graph Data */,
+				EA109E612322EFB900C315E5 /* Hover Colors */,
+				EA109E5E2322EF0B00C315E5 /* Lotties */,
+				EA109E5F2322EF2100C315E5 /* Views */,
+				EA109E602322EF7C00C315E5 /* Fonts */,
 				EA68743B231A1E900099DAC4 /* Assets.xcassets */,
 				EA687440231A1E910099DAC4 /* Info.plist */,
 				EAC9289D231E0F2D006FF88C /* LaunchScreen.storyboard */,
@@ -368,12 +413,11 @@
 				EA109E542320F0DF00C315E5 /* VertexPointAnnotation.swift in Sources */,
 				EA687435231A1E8F0099DAC4 /* AppDelegate.swift in Sources */,
 				EA687455231A1F560099DAC4 /* Vertex.swift in Sources */,
-				EA687479231C73460099DAC4 /* LocationVertex.swift in Sources */,
+				EA687479231C73460099DAC4 /* LocationVertexImplentation.swift in Sources */,
 				EAC92894231CE417006FF88C /* SplashView.swift in Sources */,
 				EAC9289C231DB538006FF88C /* CustomButton.swift in Sources */,
 				EAC9289A231D9269006FF88C /* GradientView.swift in Sources */,
 				EA687477231C479A0099DAC4 /* Locations.swift in Sources */,
-				EA109E582320F20E00C315E5 /* CardView.swift in Sources */,
 				EA687471231B64060099DAC4 /* HoverColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
