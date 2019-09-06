@@ -112,7 +112,7 @@ This part was probably my favorite part of the project. Since it was time to con
 
 To keep my `Vertex` class even cleaner, I wanted to conform to `Positionable` in an `extension`. I noticed this is a pretty common pattern in Swift development. But, as I was kindly reminded by XCode: `🚨Extensions must not contain stored properties.` So this is a bit of an aside but I found a really cool work around after researching some things for a while. The idea is to essentially declare the property you want stored and make it a computed property instead. This is then done in an extension through taking advantage of some memory addresses that will be created for the new property. Here is the code that got the job done: 
 
-<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/positionable.png" width="500">
+<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/positionable.png">
 
 Honestly, the work around adds a bit of code you could exclude if you just did like: 
 
