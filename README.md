@@ -107,7 +107,7 @@ Here is an example of a test case I wrote for a medium sized graph:
 The graph being tested was one that I had traced through several times and new the correct shortest path I wanted returned.
 
 Andddd... I ran the test and it passed! 🥳
-Even though I had some cofrimation that it worked, I spent awhile writing some more tests and adjusting little things before trying to visualize the graph. 
+Even though I had some confirmation that it worked, I spent awhile writing some more tests and adjusting little things before trying to visualize the graph. 
 
 ### 🌟Reusability with Protocol Oriented Programming
 This part was probably my favorite part of the project. Since it was time to connect my graph with a map of the world, I needed to add some stuff to my `Vertex` object. Since each `vertex` would be a point on Earth 🌍, it needed to have a `coordinates` property. I decided to make a `protocol` that I could conform my general `Vertex` class to for the purpose of my specific implementation.
