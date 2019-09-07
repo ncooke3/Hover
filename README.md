@@ -149,7 +149,9 @@ I found an awesome [tutorial](https://nshipster.com/mkgeodesicpolyline/) for the
 
 ## User Interface 
 <img src="https://media.giphy.com/media/fSLrYLK7EDfvf7VFEz/giphy.gif" width="100" height="200" img align="right">
-As much as this project was an exercise in building an app with more internal comlexity, I still put a lot of effort into making the UI intuitive and attractive. I had multiple drafts of what I wanted it to look like and was really happy with the result. I escpecially loved the launch screen. Like in my last project, I used some more [awesome lottie animations](https://github.com/airbnb/lottie-ios)!
+As much as this project was an exercise in building an app with more internal comlexity, I still put a lot of effort into making the UI intuitive and attractive. I had multiple drafts of what I wanted it to look like and was really happy with the result. I especially loved the launch screen. 
+
+Like in my last project, I used some more [awesome lottie animations](https://github.com/airbnb/lottie-ios)!
 
 ## Challenges 🙃
 There were defintely a few hiccups along the way. Some of the most challenging included selecting annotations on the map and properly resetting them after the user taps them or the *Reset* button. There was lot of logic going into how to manage *what was allowed to be pressed and when should it be*. 
