@@ -187,6 +187,8 @@ These were some of the most useful resources!
 
 🔥[MapKit Beginner’s Guide: Polylines, Polygons, and Callouts](https://www.appcoda.com/mapkit-polyline-polygon/)
 
+🔥[Building Fluid Interfaces](https://medium.com/@nathangitter/building-fluid-interfaces-ios-swift-9732bb934bf5)
+
 
 ## Interested to know more or wanna say hi? Let's chat! ☕
 👀 Peep my resume and contact info [**here**](https://ncooke3.github.io/resume-/) 😃
