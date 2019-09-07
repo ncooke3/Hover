@@ -135,6 +135,7 @@ I also made some protocols to fine tune the `Graph` class use with `Vertex`'s wi
 
 
 ## Using MapKit
+<img src="https://media.giphy.com/media/VIbTeKakEyXM95TdYW/giphy.gif" width="200" height="400" img align="right">
 After I got everything squared with the graph stuff, it was time to visualize it. 
 
 Getting the map set up reminded be a good bit of implementing a UITableView. There were a few delegate methods you needed to conform to and you then were good to go. 
