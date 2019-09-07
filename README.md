@@ -146,7 +146,7 @@ Since running the algorithm to get the the shortest path returned a list of vert
 I found an awesome [tutorial](https://nshipster.com/mkgeodesicpolyline/) for the animated drone that moves across the map when you find the shortest path. I think it was a great addition that makes the app feel more fun and playful. 
 
 ## User Interface 
-![Launch Screen](https://media.giphy.com/media/fSLrYLK7EDfvf7VFEz/giphy.gif)
+<img src="https://media.giphy.com/media/fSLrYLK7EDfvf7VFEz/giphy.gif" width="150" height="300" img align="right">
 As much as this project was an exercise in building an app with more internal comlexity, I still put a lot of effort into making the UI intuitive and attractive. I had multiple drafts of what I wanted it to look like and was really happy with the result. I escpecially loved the launch screen. Like in my last project, I used some more [awesome lottie animations](https://github.com/airbnb/lottie-ios)!
 
 ## Challenges 🙃
