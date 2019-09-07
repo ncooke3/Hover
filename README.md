@@ -129,7 +129,7 @@ Honestly, the work around adds a bit of code you could exclude if you just did l
 
 But I just thought the work-around was creative enough to have some fun with and include. 
 
-Our `Vertex` also needed to be able to calculate a heuristic (`Vertex`'s `h` property) so I conformed to `Vertex` to another `protocol Heuristable` in another extension of `Vertex`
+Our `Vertex` also needed to be able to calculate a heuristic (`Vertex`'s `h` property) so I conformed `Vertex` to another `protocol Heuristable` in another extension of `Vertex`
 
 <img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/heuristable.png">
 
