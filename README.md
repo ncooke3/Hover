@@ -1,5 +1,6 @@
 # Hover: Visualizing Graph Algorithms in iOS
 <img src="https://media.giphy.com/media/fSLrYLK7EDfvf7VFEz/giphy.gif" width="200" height="400" img align="right">
+
 ## 📖 A little intro...
 Fresh off of the production release of my first iOS app, Puff, I realized that I wanted to challenge myself to put something together that had a "bit more going on" to it than just a password manager. After all, Puff was a great project, but I want to build something that was a bit ~fancier~... maybe with more computatation? ... or logic? 
 
