@@ -1,4 +1,5 @@
 # Hover: Visualizing Graph Algorithms in iOS
+[![forthebadge](http://forthebadge.com/images/badges/made-with-swift.svg)](http://forthebadge.com)	[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
 ## TLDR; Here is the demo! 🚀
 [![Hover!](https://github.com/ncooke3/Hover/blob/master/Code%20Pics/youtube.png)](https://www.youtube.com/watch?v=rNmeimM5heg)
