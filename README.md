@@ -1,4 +1,8 @@
 # Hover: Visualizing Graph Algorithms in iOS
+<img src="https://media.giphy.com/media/fSLrYLK7EDfvf7VFEz/giphy.gif" width="200" height="400" img align="right">
+
+## TLDR; Here is the demo! 🚀
+![Hover!](https://www.youtube.com/watch?v=rNmeimM5heg)
 
 ## 📖 A little intro...
 Fresh off of the production release of my first iOS app, Puff, I realized that I wanted to challenge myself to put something together that had a "bit more going on" to it than just a password manager. After all, Puff was a great project, but I want to build something that was a bit ~fancier~... maybe with more computatation? ... or logic? 
@@ -80,6 +84,7 @@ IF you notice we also have methods to add `Vertex`'s and `Edge`'s to our graph! 
 
 
 ## A ⭐️ Search: Our Path Finding Champion 🏆
+<img src="https://media.giphy.com/media/SXlntGikGGzfS9MAMK/giphy.gif" width="200" height="400" img align="right">
 So now that we have a `Graph` that can be filled with `Vertices` and `Edges`, let's start thinking about how we are going to search it... 🤔 Since my goal was to visualize the the shortest path between two user selected vertices, I chose the A*Star search algorithm. I mentioned a little bit about it in *Getting Started* above 👆. 
 
 By the time I got started on *actually* writing the code to implement the algorithm, I was pretty comfortable with it since I knew its flow (since I worked out so many examples) and understood some of the pseudocode for it I found online. 
@@ -96,7 +101,7 @@ Until now, I had never written tests for much of the code I wrote. I thought thi
 
 Here is an example of a test case I wrote for a medium sized graph: 
 <p>
-<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/test.png" width="500">
+<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/test.png">
 </p>
 The graph being tested was one that I had traced through several times and new the correct shortest path I wanted returned.
 
@@ -112,7 +117,7 @@ This part was probably my favorite part of the project. Since it was time to con
 
 To keep my `Vertex` class even cleaner, I wanted to conform to `Positionable` in an `extension`. I noticed this is a pretty common pattern in Swift development. But, as I was kindly reminded by XCode: `🚨Extensions must not contain stored properties.` So this is a bit of an aside but I found a really cool work around after researching some things for a while. The idea is to essentially declare the property you want stored and make it a computed property instead. This is then done in an extension through taking advantage of some memory addresses that will be created for the new property. Here is the code that got the job done: 
 
-<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/positionable.png" width="500">
+<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/positionable.png">
 
 Honestly, the work around adds a bit of code you could exclude if you just did like: 
 
@@ -125,7 +130,7 @@ But I just thought the work-around was creative enough to have some fun with and
 
 Our `Vertex` also needed to be able to calculate a heuristic (`Vertex`'s `h` property) so I conformed to `Vertex` to another `protocol Heuristable` in another extension of `Vertex`
 
-<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/pics/heuristable.png">
+<img align="center" src="https://github.com/ncooke3/Hover/blob/master/Code%20Pics/heuristable.png">
 
 I placed these protocols and corresponding extensions in the `//  LocationVertexImplementation.swift` file so take a look 👀 if interested!
 
@@ -133,6 +138,7 @@ I also made some protocols to fine tune the `Graph` class use with `Vertex`'s wi
 
 
 ## Using MapKit
+<img src="https://media.giphy.com/media/VIbTeKakEyXM95TdYW/giphy.gif" width="200" height="400" img align="right">
 After I got everything squared with the graph stuff, it was time to visualize it. 
 
 Getting the map set up reminded be a good bit of implementing a UITableView. There were a few delegate methods you needed to conform to and you then were good to go. 
@@ -146,7 +152,10 @@ Since running the algorithm to get the the shortest path returned a list of vert
 I found an awesome [tutorial](https://nshipster.com/mkgeodesicpolyline/) for the animated drone that moves across the map when you find the shortest path. I think it was a great addition that makes the app feel more fun and playful. 
 
 ## User Interface 
-As much as this project was an exercise in building an app with more internal comlexity, I still put a lot of effort into making the UI intuitive and attractive. I had multiple drafts of what I wanted it to look like and was really happy with the result. I escpecially loved the launch screen. Like in my last project, I used some more [awesome lottie animations](https://github.com/airbnb/lottie-ios)!
+<img src="https://media.giphy.com/media/fSLrYLK7EDfvf7VFEz/giphy.gif" width="100" height="200" img align="right">
+As much as this project was an exercise in building an app with more internal comlexity, I still put a lot of effort into making the UI intuitive and attractive. I had multiple drafts of what I wanted it to look like and was really happy with the result. I especially loved the launch screen. 
+
+Like in my last project, I used some more [awesome lottie animations](https://github.com/airbnb/lottie-ios)!
 
 ## Challenges 🙃
 There were defintely a few hiccups along the way. Some of the most challenging included selecting annotations on the map and properly resetting them after the user taps them or the *Reset* button. There was lot of logic going into how to manage *what was allowed to be pressed and when should it be*. 
