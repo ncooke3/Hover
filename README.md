@@ -80,7 +80,7 @@ IF you notice we also have methods to add `Vertex`'s and `Edge`'s to our graph! 
 
 
 ## A ⭐️ Search: Our Path Finding Champion 🏆
-<img src="https://media.giphy.com/media/SXlntGikGGzfS9MAMK/giphy.gif" width="250" height="300" img align="right">
+<img src="https://media.giphy.com/media/SXlntGikGGzfS9MAMK/giphy.gif" width="200" height="400" img align="right">
 So now that we have a `Graph` that can be filled with `Vertices` and `Edges`, let's start thinking about how we are going to search it... 🤔 Since my goal was to visualize the the shortest path between two user selected vertices, I chose the A*Star search algorithm. I mentioned a little bit about it in *Getting Started* above 👆. 
 
 By the time I got started on *actually* writing the code to implement the algorithm, I was pretty comfortable with it since I knew its flow (since I worked out so many examples) and understood some of the pseudocode for it I found online. 
