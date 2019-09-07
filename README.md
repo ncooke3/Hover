@@ -1,7 +1,6 @@
 # Hover: Visualizing Graph Algorithms in iOS
-
-## 📖 A little intro...
 <img src="https://media.giphy.com/media/fSLrYLK7EDfvf7VFEz/giphy.gif" width="200" height="400" img align="right">
+## 📖 A little intro...
 Fresh off of the production release of my first iOS app, Puff, I realized that I wanted to challenge myself to put something together that had a "bit more going on" to it than just a password manager. After all, Puff was a great project, but I want to build something that was a bit ~fancier~... maybe with more computatation? ... or logic? 
 
 Well, it turned out that the previous weekend I had been reviewing graph algorithms to prep for interview season 😤 and that's when it hit me! Let's make a graph! And even better, let's visualize it and allow the user be able to interact with it!
