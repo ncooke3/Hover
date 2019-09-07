@@ -6,7 +6,7 @@
 ## 📖 A little intro...
 <img src="https://media.giphy.com/media/fSLrYLK7EDfvf7VFEz/giphy.gif" width="200" height="400" img align="right">
 
-Fresh off of the production release of my first iOS app, Puff, I realized that I wanted to challenge myself to put something together that had a "bit more going on" to it than just a password manager. After all, Puff was a great project, but I want to build something that was a bit ~fancier~... maybe with more computatation? ... or logic? 
+Fresh off of the production release of my first iOS app, [Puff](https://apps.apple.com/app/id1477766476), I realized that I wanted to challenge myself to put something together that had a "bit more going on" to it than just a password manager. After all, Puff was a great project, but I want to build something that was a bit ~fancier~... maybe with more computatation? ... or logic? 
 
 Well, it turned out that the previous weekend I had been reviewing graph algorithms to prep for interview season 😤 and that's when it hit me! Let's make a graph! And even better, let's visualize it and allow the user be able to interact with it!
 
@@ -17,7 +17,7 @@ So at a high level, this was the plan:
 
 • Implement a Graph 🤓
 
-• Implement the A*Star Algorithm to find the shortes path between vertices 😱
+• Implement the A*Star Algorithm to find the shortest path between vertices 😱
 
 • Create a map of data using Apple's MapKit 🗺
 
